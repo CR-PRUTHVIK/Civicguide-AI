@@ -1,0 +1,125 @@
+================================================================================
+INDIAN RAILWAYS RECRUITMENT EXAMINATIONS (RRB & RRC) - COMPREHENSIVE GUIDE
+================================================================================
+
+OVERVIEW:
+Indian Railways is one of the largest employers in the world. Recruitment for various posts in Indian Railways is conducted through 21 Railway Recruitment Boards (RRBs) and Railway Recruitment Cells (RRCs) across India.
+
+================================================================================
+1. RRB NTPC (NON-TECHNICAL POPULAR CATEGORIES)
+
+OVERVIEW:
+RRB NTPC recruits for graduate and undergraduate non-technical posts across all railway zones.
+
+POSTS & LEVELS:
+1. Graduate Level Posts (Pay Level 4, 5, 6):
+   - Station Master (SM)
+   - Goods Train Manager (Goods Guard)
+   - Senior Commercial cum Ticket Clerk (Sr. CCTC)
+   - Senior Clerk cum Typist
+   - Junior Account Assistant cum Typist (JAA)
+   - Commercial Apprentice (CA)
+2. Undergraduate Level Posts (Pay Level 2 & 3 - 12th Pass):
+   - Junior Clerk cum Typist
+   - Accounts Clerk cum Typist
+   - Junior Time Keeper
+   - Trains Clerk (TC)
+   - Commercial cum Ticket Clerk (CCTC)
+
+ELIGIBILITY:
+- Age Limit:
+  * Undergraduate Posts: 18 to 30/33 years.
+  * Graduate Posts: 18 to 33/36 years.
+  * Relaxations: OBC +3 years, SC/ST +5 years, PwBD +10 years.
+- Educational Qualification:
+  * 12th (+2 Stage) or equivalent with not less than 50% marks for undergraduate posts.
+  * University Degree or its equivalent for graduate posts.
+
+SELECTION PROCESS & STAGES:
+1. 1st Stage Computer Based Test (CBT-1):
+   - Common screening test for all posts.
+   - Total Questions: 100 Qs (General Awareness 40, Mathematics 30, General Intelligence & Reasoning 30).
+   - Duration: 90 minutes (120 mins for PwBD).
+   - Negative Marking: 1/3rd mark deducted for wrong answers.
+2. 2nd Stage Computer Based Test (CBT-2):
+   - Separate exam for each 7th CPC Pay Level (Level 2, 3, 4, 5, 6).
+   - Total Questions: 120 Qs (General Awareness 50, Mathematics 35, Reasoning 35).
+   - Duration: 90 minutes.
+3. Computer Based Aptitude Test (CBAT) / Typing Skill Test (TST):
+   - CBAT: Mandatory for Station Master and Traffic Assistant. Candidate must score a minimum T-score of 42 marks in each test battery to qualify. No negative marking in CBAT.
+   - Typing Skill Test (TST): Qualifying test for Senior Clerk cum Typist, Junior Accounts Assistant cum Typist, Accounts Clerk cum Typist. Speed required: 30 words per minute (WPM) in English OR 25 WPM in Hindi on personal computer without editing tools.
+4. Document Verification (DV) & Medical Examination.
+
+
+================================================================================
+2. RRB GROUP D (LEVEL-1 RECRUITMENT)
+
+OVERVIEW:
+RRC / RRB Group D recruits for Level-1 track, maintenance, mechanical, and electrical positions in Indian Railways.
+
+POSTS INCLUDED:
+- Track Maintainer Grade-IV
+- Assistant Pointsman (Traffic)
+- Assistant Workshop (Mechanical)
+- Assistant Bridge / Track Machine / Works / C&W
+- Assistant Loco Shed (Diesel / Electrical)
+- Assistant Operations (Electrical)
+- Hospital Assistant / Attendant
+
+ELIGIBILITY:
+- Age Limit: 18 to 33/36 years (with standard category relaxations).
+- Educational Qualification: 10th pass (Matriculation) from a recognized Board/NCVT/SCVT OR National Apprenticeship Certificate (NAC) granted by NCVT OR ITI.
+
+SELECTION PROCESS:
+1. Computer Based Test (CBT):
+   - Total Questions: 100 Qs in 90 minutes.
+   - Sections: General Science (25), Mathematics (25), General Intelligence & Reasoning (30), General Awareness & Current Affairs (20).
+   - Negative Marking: 1/3rd mark for every wrong answer.
+2. Physical Efficiency Test (PET) - Mandatory & Qualifying:
+   - For Male Candidates:
+     * Must lift and carry 35 kg of weight for a distance of 100 meters in 2 minutes in one chance without putting the weight down.
+     * Must run for a distance of 1000 meters in 4 minutes and 15 seconds in one chance.
+   - For Female Candidates:
+     * Must lift and carry 20 kg of weight for a distance of 100 meters in 2 minutes in one chance without putting the weight down.
+     * Must run for a distance of 1000 meters in 5 minutes and 40 seconds in one chance.
+3. Document Verification & Comprehensive Medical Examination.
+
+
+================================================================================
+3. RRB ASSISTANT LOCO PILOT (ALP) & TECHNICIAN
+
+OVERVIEW:
+Recruitment of train drivers (Assistant Loco Pilots) and technical engineering personnel for maintaining railway engines, carriages, signals, and tracks.
+
+ELIGIBILITY:
+- Age Limit: 18 to 30/33 years.
+- Educational Qualification:
+  * Matriculation / 10th pass PLUS ITI in approved trades (Fitter, Electrician, Instrument Mechanic, Millwright, Machinist, Diesel Mechanic, Tractor Mechanic, Turner, Wireman, Refrigeration & AC, etc.) OR
+  * 3-year Diploma in Mechanical / Electrical / Electronics / Automobile Engineering OR
+  * Engineering Degree (B.E./B.Tech) in relevant disciplines.
+- Medical Fitness: Extremely strict visual standard A-1 (Distant Vision: 6/6, 6/6 without glasses with fogging test; Near Vision: Sn: 0.6, 0.6 without glasses; Must pass tests for Colour Vision, Binocular Vision, Field of Vision, and Night Vision. Lasik surgery is strictly disqualified).
+
+SELECTION STAGES:
+1. First Stage CBT (CBT-1): 75 Qs, 60 mins (Maths, Reasoning, General Science, General Awareness). Screening only.
+2. Second Stage CBT (CBT-2):
+   - Part A: 100 Qs, 90 mins (Maths, Reasoning, Basic Science & Engineering). 70% weightage in final merit.
+   - Part B: 75 Qs, 60 mins (Relevant trade syllabus). Qualifying nature (minimum 35% mandatory).
+3. Computer Based Aptitude Test (CBAT): Only for ALP candidates. 30% weightage in final merit.
+4. Document Verification and Medical Examination.
+
+
+================================================================================
+4. RAILWAY PROTECTION FORCE (RPF) - SI & CONSTABLE
+
+OVERVIEW:
+RPF provides security to railway passengers, passenger areas, and railway property across India.
+
+RECRUITMENT DETAILS:
+1. RPF SUB-INSPECTOR (SI):
+   - Eligibility: Graduate in any discipline. Age 20 to 25/28 years.
+   - Selection: CBT (120 Qs, 90 mins: General Awareness 50, Arithmetic 35, General Intelligence 35) + Physical Measurement Test (PMT) & Physical Efficiency Test (PET).
+   - PET Standards: 1600m run in 6 mins 30 secs (Men), 800m in 4 mins (Women), Long Jump 12 ft (Men) / 9 ft (Women), High Jump 3 ft 9 in (Men) / 3 ft (Women).
+2. RPF CONSTABLE:
+   - Eligibility: 10th pass (Matriculation). Age 18 to 25/28 years.
+   - PET Standards: 1600m run in 5 mins 45 secs (Men), 800m run in 3 mins 40 secs (Women).
+- Official Portal: rrbapply.gov.in / indianrailways.gov.in

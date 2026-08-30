@@ -1,0 +1,166 @@
+================================================================================
+DEFENCE & MILITARY RECRUITMENT EXAMINATIONS IN INDIA - COMPREHENSIVE GUIDE
+================================================================================
+
+1. NATIONAL DEFENCE ACADEMY (NDA) & NAVAL ACADEMY (NA) EXAMINATION
+
+OVERVIEW:
+The NDA exam is conducted twice a year by the Union Public Service Commission (UPSC) for recruiting candidates directly after Class 12 into the prestigious National Defence Academy (Khadakwasla, Pune) for training as commissioned officers in the Indian Army, Indian Navy, and Indian Air Force.
+
+ELIGIBILITY CRITERIA:
+- Nationality: Citizen of India, subject of Nepal, or Tibetan refugee who came before 1st January 1962.
+- Gender & Marital Status: Unmarried male and female candidates.
+- Age Limits: 16.5 years to 19.5 years during the commencement of the course.
+- Educational Qualification:
+  * For Army Wing: Passed Class 12 (10+2 pattern) or equivalent examination from a recognized Board.
+  * For Air Force, Navy, and Naval Academy (10+2 Cadet Entry): Passed Class 12 with Physics, Chemistry, and Mathematics (PCM).
+  * Candidates appearing in Class 12 examination are also eligible to apply.
+
+EXAMINATION PATTERN:
+1. WRITTEN EXAMINATION (Total: 900 Marks):
+   - Paper 1: Mathematics (Code 01)
+     * Duration: 2.5 hours
+     * Max Marks: 300 marks (120 Questions)
+     * Topics: Algebra, Matrices & Determinants, Trigonometry, Analytical Geometry (2D and 3D), Differential Calculus, Integral Calculus, Vector Algebra, Statistics & Probability.
+     * Marking: +2.5 marks for correct answer, -0.83 marks for wrong answer.
+   - Paper 2: General Ability Test - GAT (Code 02)
+     * Duration: 2.5 hours
+     * Max Marks: 600 marks (150 Questions)
+     * Part A: English (50 questions, 200 marks) - Grammar, Vocabulary, Comprehension.
+     * Part B: General Knowledge (100 questions, 400 marks) - Physics, Chemistry, General Science, History, Freedom Movement, Geography, Current Events.
+     * Marking: +4 marks for correct answer, -1.33 marks for wrong answer.
+
+2. SSB INTERVIEW (SERVICES SELECTION BOARD) - 900 Marks:
+   - Candidates qualifying the written exam cutoff receive call letters for a 5-day SSB interview testing Officer Like Qualities (OLQs).
+   - Official Portal: upsc.gov.in
+
+
+================================================================================
+2. COMBINED DEFENCE SERVICES (CDS) EXAMINATION
+
+OVERVIEW:
+The CDS examination is conducted biannually (CDS I and CDS II) by UPSC for recruiting university graduates as commissioned officers into:
+1. Indian Military Academy (IMA), Dehradun - Permanent Commission.
+2. Indian Naval Academy (INA), Ezhimala - Permanent Commission.
+3. Air Force Academy (AFA), Hyderabad - Permanent Commission.
+4. Officers Training Academy (OTA), Chennai - Short Service Commission (Men & Women).
+
+ELIGIBILITY CRITERIA:
+- Educational Qualification:
+  * For IMA & OTA: Degree of a recognized University (any stream).
+  * For INA: Degree in Engineering (B.E./B.Tech) from a recognized university.
+  * For AFA: Degree of a recognized university (with Physics & Mathematics at 10+2 level) or Bachelor of Engineering.
+- Age Limits:
+  * IMA: 19 to 24 years (Unmarried).
+  * INA: 19 to 24 years (Unmarried).
+  * AFA: 20 to 24 years (Upper age relaxable up to 26 years for valid Commercial Pilot License holders).
+  * OTA (Men & Women): 19 to 25 years.
+
+EXAM PATTERN:
+- For IMA, INA, and AFA (Total 300 Marks):
+  * English: 100 marks (2 hours).
+  * General Knowledge: 100 marks (2 hours).
+  * Elementary Mathematics: 100 marks (2 hours).
+- For Officers Training Academy (OTA) (Total 200 Marks):
+  * English: 100 marks (2 hours).
+  * General Knowledge: 100 marks (2 hours). (No Mathematics paper for OTA).
+- SSB Interview: 300 marks for IMA/INA/AFA; 200 marks for OTA.
+
+
+================================================================================
+3. AIR FORCE COMMON ADMISSION TEST (AFCAT)
+
+OVERVIEW:
+AFCAT is conducted twice a year by the Indian Air Force (IAF) to select Class-I Gazetted Officers in Flying and Ground Duty (Technical and Non-Technical) branches.
+
+ELIGIBILITY & BRANCHES:
+- Flying Branch: Age 20-24 years. Minimum 50% marks in Math & Physics at 10+2 AND Graduation with minimum 60% marks (or B.E./B.Tech with 60%).
+- Ground Duty (Technical) - Aeronautical Engineering: Age 20-26 years. Minimum 50% in Physics & Math at 10+2 + 4-year Engineering Degree with 60%.
+- Ground Duty (Non-Technical) - Administration, Logistics, Accounts, Education, Meteorology: Age 20-26 years. Graduate with minimum 60% marks (B.Com for Accounts, Post-Grad for Education/Meteorology).
+
+EXAM PATTERN:
+- Mode: Online Computer Based Test (CBT).
+- Total Questions: 100 questions (300 marks), Duration: 2 hours.
+- Sections: General Awareness, Verbal Ability in English, Numerical Ability, Reasoning and Military Aptitude Test.
+- Marking: +3 marks for correct answer, -1 mark for incorrect answer.
+- Subsequent Stage: Air Force Selection Board (AFSB) Interview (5 days) + Computerized Pilot Selection System (CPSS) for Flying branch.
+- Official Portal: afcat.cdac.in
+
+
+================================================================================
+4. CENTRAL ARMED POLICE FORCES (CAPF - ASSISTANT COMMANDANTS)
+
+OVERVIEW:
+UPSC conducts the CAPF (AC) examination annually to recruit Assistant Commandants (Group A Gazetted Officers) for central paramilitary forces:
+- Border Security Force (BSF)
+- Central Reserve Police Force (CRPF)
+- Central Industrial Security Force (CISF)
+- Indo-Tibetan Border Police (ITBP)
+- Sashastra Seema Bal (SSB)
+
+ELIGIBILITY:
+- Age: 20 to 25 years (relaxations for OBC +3 yrs, SC/ST +5 yrs).
+- Educational Qualification: Bachelor's degree from a recognized university.
+- Gender: Both Male and Female candidates.
+
+SELECTION STAGES:
+1. Written Examination:
+   - Paper I: General Ability and Intelligence (250 Marks, Objective MCQ, 2 hours).
+   - Paper II: General Studies, Essay and Comprehension (200 Marks, Descriptive, 3 hours).
+2. Physical Standards Test (PST) & Physical Efficiency Test (PET):
+   - 100 meters race: 16 sec (Males) / 18 sec (Females).
+   - 800 meters race: 3 min 45 sec (Males) / 4 min 45 sec (Females).
+   - Long Jump: 3.5 meters (Males, 3 chances) / 3.0 meters (Females, 3 chances).
+   - Shot Put (7.26 kg): 4.5 meters (Males only).
+3. Medical Standards Test.
+4. Personality Test / Interview: 150 Marks conducted by UPSC.
+
+
+================================================================================
+5. AGNIPATH / AGNIVEER SCHEME (ARMY, NAVY, AIR FORCE)
+
+OVERVIEW:
+The Agnipath Scheme is the primary enrollment route for non-officer soldiers (Agniveers) into the Indian Army, Indian Navy, and Indian Air Force for a period of 4 years. Up to 25% of each batch is absorbed into the regular permanent cadre based on merit and performance.
+
+ELIGIBILITY CRITERIA:
+- Age Limit: 17.5 to 21 years across all three services.
+- Educational Qualifications:
+  * Agniveer (General Duty - GD): Class 10 / Matric pass with 45% marks in aggregate and 33% in each subject.
+  * Agniveer (Technical): Class 12 / Intermediate in Science with Physics, Chemistry, Math, and English with 50% aggregate and 40% in each subject.
+  * Agniveer (Clerk / Store Keeper Technical): Class 12 with 60% aggregate and 50% in English and Math/Accounts.
+  * Agniveer (Tradesmen): Class 10th or 8th simple pass.
+
+SELECTION PROCESS:
+1. Phase 1: Online Common Entrance Exam (CEE) / Computer Based Test.
+2. Phase 2: Recruitment Rally with Physical Fitness Test (PFT):
+   - 1.6 km Run: Group I (Within 5 min 30 sec - 60 marks) / Group II (5 min 31 sec to 5 min 45 sec - 48 marks).
+   - Beam (Pull Ups): 10 pull-ups (40 marks), 9 (33 marks), 8 (27 marks), 7 (21 marks), 6 (16 marks).
+   - 9 Feet Ditch Jump: Qualifying.
+   - Zig-Zag Balance: Qualifying.
+3. Phase 3: Physical Measurement Test (PMT), Medical Examination, and Document Verification.
+
+BENEFITS & SEVA NIDHI PACKAGE:
+- Year 1: ₹30,000/month (In-hand ₹21,000 + ₹9,000 corpus fund).
+- Year 2: ₹33,000/month (In-hand ₹23,100 + ₹9,900 corpus fund).
+- Year 3: ₹36,500/month (In-hand ₹25,550 + ₹10,950 corpus fund).
+- Year 4: ₹40,000/month (In-hand ₹28,000 + ₹12,000 corpus fund).
+- Exit Package: After 4 years, ₹11.71 Lakhs tax-free "Seva Nidhi" package with interest.
+- Reservation: 10% reservation in CAPFs, Assam Rifles, Coast Guard, Defence PSUs, and state police forces for ex-Agniveers.
+
+
+================================================================================
+6. SERVICES SELECTION BOARD (SSB) INTERVIEW STRUCTURE (5-DAY TESTING)
+
+The SSB interview assesses 15 Officer Like Qualities (OLQs) grouped into 4 factors (Planning & Organizing, Social Adjustment, Social Effectiveness, Dynamic Factor).
+
+DAY-BY-DAY BREAKDOWN:
+- Day 1 (Screening Test): Officer Intelligence Rating (OIR) test (Verbal & Non-Verbal reasoning) + Picture Perception and Description Test (PPDT) & group discussion. (Screened-in candidates stay).
+- Day 2 (Psychological Tests):
+  * Thematic Apperception Test (TAT) - 12 story slides.
+  * Word Association Test (WAT) - 60 words, 15 seconds each.
+  * Situation Reaction Test (SRT) - 60 real-life situations in 30 minutes.
+  * Self Description Test (SDT) - Parents, teachers, friends, self-view.
+- Day 3 & 4 (Group Testing Officer - GTO Tasks):
+  * Group Discussion (GD), Group Planning Exercise (GPE), Progressive Group Task (PGT), Half Group Task (HGT), Individual Obstacles (IO - 10 obstacles in 3 mins), Command Task, Snake Race / Group Obstacle Race, Final Group Task (FGT).
+  * Personal Interview with Interviewing Officer (IO).
+- Day 5 (Conference): Final board recommendation by all assessors followed by result announcement and medical examination for recommended candidates.

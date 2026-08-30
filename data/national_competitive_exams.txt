@@ -1,0 +1,143 @@
+================================================================================
+NATIONAL COMPETITIVE EXAMINATIONS IN INDIA - COMPREHENSIVE GUIDE
+================================================================================
+
+1. JOINT ENTRANCE EXAMINATION (JEE) - ENGINEERING ENTRANCE
+
+OVERVIEW:
+The Joint Entrance Examination (JEE) is the national-level entrance examination for admission to premier engineering and technology institutes in India, including IITs (Indian Institutes of Technology), NITs (National Institutes of Technology), IIITs (Indian Institutes of Information Technology), and Centrally Funded Technical Institutes (CFTIs).
+
+STAGES:
+1. JEE MAIN:
+   - Conducting Body: National Testing Agency (NTA).
+   - Frequency: Conducted in two sessions annually (typically Session 1 in January/February and Session 2 in April).
+   - Purpose: Admission to NITs, IIITs, CFTIs, and qualifying cutoff exam for JEE Advanced.
+   - Eligibility:
+     * Candidate must have passed or appeared in Class 12 (or equivalent) examination with Physics and Mathematics as compulsory subjects along with Chemistry/Biology/Biotechnology/Technical Vocational subject.
+     * No strict age limit for JEE Main, but candidate must have passed Class 12 in the current year or preceding two years.
+     * Minimum 75% aggregate marks in Class 12 (65% for SC/ST categories) or being in the top 20 percentile of the respective state/central board is required for admission into IITs/NITs/IIITs.
+   - Exam Pattern (Paper 1 - B.E./B.Tech):
+     * Mode: Computer Based Test (CBT).
+     * Total Marks: 300 marks.
+     * Subjects: Physics (100 marks), Chemistry (100 marks), Mathematics (100 marks).
+     * Format: 20 Multiple Choice Questions (MCQs) + 10 Numerical Value Questions (attempt any 5) per subject.
+     * Marking Scheme: +4 for correct answer, -1 for incorrect answer (including numerical section).
+   - Official Portal: jeemain.nta.ac.in
+
+2. JEE ADVANCED:
+   - Conducting Body: One of the 7 zonal IITs under the guidance of the Joint Admission Board (JAB).
+   - Eligibility: Top 2,50,000 successful candidates from JEE Main (all categories included). Maximum of two attempts in consecutive years.
+   - Purpose: Sole entrance examination for B.Tech/BS/Dual Degree admissions into 23 IITs.
+   - Exam Pattern: Two compulsory papers (Paper 1 and Paper 2), 3 hours each on the same day. Computer Based Test. Dynamic marking scheme.
+   - Official Portal: jeeadv.ac.in
+
+
+================================================================================
+2. NATIONAL ELIGIBILITY CUM ENTRANCE TEST (NEET) - MEDICAL ENTRANCE
+
+OVERVIEW:
+NEET is the single all-India entrance examination for undergraduate medical (MBBS), dental (BDS), AYUSH (BAMS, BHMS, BUMS, BSMS), and veterinary (BVSc & AH) admissions in all government, private, deemed medical colleges, and institutions like AIIMS and JIPMER.
+
+NEET UG DETAILS:
+- Conducting Body: National Testing Agency (NTA) / National Medical Commission (NMC).
+- Frequency: Conducted once every year (typically in May).
+- Eligibility:
+  * Minimum Age: 17 years completed on or before 31st December of the year of admission.
+  * Upper Age Limit: No upper age limit.
+  * Educational Qualification: Must have passed Class 12 or equivalent with Physics, Chemistry, Biology/Biotechnology, and English as core subjects.
+  * Minimum Qualifying Marks in 12th: 50% for General (UR), 40% for OBC/SC/ST, 45% for General-PwD in PCB aggregate.
+- Exam Pattern:
+  * Mode: Pen and Paper (OMR based offline exam).
+  * Duration: 3 hours and 20 minutes (200 minutes).
+  * Total Questions: 200 questions (candidate attempts 180 questions).
+  * Total Marks: 720 marks.
+  * Subject Breakdown:
+    - Physics: Section A (35 Qs, 140 marks) + Section B (15 Qs, attempt any 10, 40 marks).
+    - Chemistry: Section A (35 Qs, 140 marks) + Section B (15 Qs, attempt any 10, 40 marks).
+    - Botany: Section A (35 Qs, 140 marks) + Section B (15 Qs, attempt any 10, 40 marks).
+    - Zoology: Section A (35 Qs, 140 marks) + Section B (15 Qs, attempt any 10, 40 marks).
+  * Marking Scheme: +4 marks for correct answer, -1 mark for incorrect answer, 0 for unanswered.
+- Official Portal: exams.nta.ac.in/NEET
+
+
+================================================================================
+3. UPSC CIVIL SERVICES EXAMINATION (CSE) - ALL INDIA SERVICES
+
+OVERVIEW:
+The Civil Services Examination (CSE) conducted by the Union Public Service Commission (UPSC) is India's premier examination for recruitment to the All India Services and Central Civil Services, including the Indian Administrative Service (IAS), Indian Police Service (IPS), Indian Foreign Service (IFS), Indian Revenue Service (IRS), and Indian Audit & Accounts Service (IA&AS).
+
+ELIGIBILITY CRITERIA:
+- Nationality: Citizen of India (for IAS and IPS).
+- Educational Qualification: A bachelor's degree in any discipline from a recognized university or deemed university. Final-year degree students can also apply for the Preliminary exam.
+- Age Limits (as of August 1st of the examination year):
+  * General Category: 21 to 32 years (Maximum 6 attempts).
+  * OBC Category: 21 to 35 years (Maximum 9 attempts).
+  * SC / ST Category: 21 to 37 years (Unlimited attempts up to age limit).
+  * PwBD Category: Age relaxation of up to 10 years (9 attempts for General/OBC, unlimited for SC/ST).
+
+EXAMINATION STAGES:
+1. STAGE 1: CIVIL SERVICES (PRELIMINARY) EXAMINATION:
+   - Objective type (MCQ) screening test consisting of two compulsory papers (200 marks each):
+     * General Studies Paper I (GS 1): 100 questions, 200 marks. Covers Indian Polity, History, Geography, Economy, Science & Tech, Environment, and Current Affairs. (Decides cutoff for qualifying to Mains).
+     * General Studies Paper II (CSAT): 80 questions, 200 marks. Covers Comprehension, Interpersonal Skills, Logical Reasoning, Analytical Ability, and Basic Numeracy. (Qualifying nature; requires minimum 33% / 66 marks).
+   - Negative Marking: 1/3rd of the marks assigned to that question.
+
+2. STAGE 2: CIVIL SERVICES (MAIN) EXAMINATION:
+   - Written descriptive examination consisting of 9 papers (Total 1750 marks for merit):
+     * Paper A: Indian Language (from 8th Schedule of Constitution) - 300 marks (Qualifying: 25%).
+     * Paper B: English Language - 300 marks (Qualifying: 25%).
+     * Paper I: Essay - 250 marks.
+     * Paper II: General Studies I (Indian Heritage, Culture, History, Geography & Society) - 250 marks.
+     * Paper III: General Studies II (Governance, Constitution, Polity, Social Justice & International Relations) - 250 marks.
+     * Paper IV: General Studies III (Technology, Economic Development, Biodiversity, Environment, Security & Disaster Management) - 250 marks.
+     * Paper V: General Studies IV (Ethics, Integrity, and Aptitude) - 250 marks.
+     * Paper VI & VII: Optional Subject Paper 1 & Paper 2 - 250 marks each (Total 500 marks).
+
+3. STAGE 3: PERSONALITY TEST (INTERVIEW):
+   - Conducted at UPSC Dholpur House, New Delhi.
+   - Total Marks: 275 marks.
+   - Evaluates mental alertness, critical powers of assimilation, clear and logical exposition, balance of judgement, variety and depth of interest, ability for social cohesion and leadership, intellectual and moral integrity.
+   - Grand Total for Final Merit List: 2025 marks (1750 Written + 275 Interview).
+- Official Portal: upsc.gov.in
+
+
+================================================================================
+4. STAFF SELECTION COMMISSION (SSC) - CENTRAL GOVERNMENT POSTS
+
+OVERVIEW:
+Staff Selection Commission (SSC) conducts recruitment for Group B (Non-Gazetted) and Group C (Non-Technical) posts in various Ministries, Departments, and Attached Offices of the Government of India.
+
+MAJOR EXAMS:
+1. SSC CGL (COMBINED GRADUATE LEVEL EXAMINATION):
+   - Posts: Assistant Section Officer (ASO in CSS, MEA, IB, Railway), Income Tax Inspector, Central Excise Inspector, Assistant Enforcement Officer, Sub-Inspector (CBI, NIA), Auditor, Tax Assistant.
+   - Eligibility: Bachelor's degree in any discipline. Age limit generally 18-30/32 years (with category relaxations).
+   - Exam Pattern:
+     * Tier-I (CBT): 100 MCQs, 200 marks (General Intelligence & Reasoning, General Awareness, Quantitative Aptitude, English Comprehension). Qualifying in nature.
+     * Tier-II (CBT):
+       - Paper I (Compulsory for all posts): Mathematical Abilities, Reasoning & General Intelligence, English Language & Comprehension, General Awareness, Computer Knowledge Module, and Data Entry Speed Test (DEST).
+       - Paper II: For Junior Statistical Officer (JSO) posts.
+
+2. SSC CHSL (COMBINED HIGHER SECONDARY LEVEL EXAMINATION):
+   - Posts: Lower Division Clerk (LDC), Junior Secretariat Assistant (JSA), Data Entry Operator (DEO).
+   - Eligibility: Passed Class 12 (10+2) from a recognized board. Age limit 18-27 years.
+   - Exam Pattern: Tier-I Computer Based Test + Tier-II Objective & Skill/Typing Test.
+- Official Portal: ssc.gov.in
+
+
+================================================================================
+5. BANKING & FINANCIAL INSTITUTION EXAMINATIONS
+
+1. IBPS & SBI PO (PROBATIONARY OFFICER):
+   - Conducting Bodies: Institute of Banking Personnel Selection (IBPS) for Public Sector Banks; State Bank of India (SBI) for SBI PO.
+   - Role: Scale-I Officer responsible for banking operations, credit approval, foreign exchange, and customer relations.
+   - Eligibility: Graduation in any discipline. Age limit 20-30 years.
+   - Selection Process:
+     * Phase 1 (Prelims): English Language (30 Qs), Quantitative Aptitude (35 Qs), Reasoning Ability (35 Qs) - Total 100 marks, 1 hour.
+     * Phase 2 (Mains): Reasoning & Computer Aptitude, Data Analysis & Interpretation, General/Economy/Banking Awareness, English Language + Descriptive English Essay & Letter writing.
+     * Phase 3: Psychometric Test, Group Discussion (GD), and Personal Interview.
+
+2. RBI GRADE B OFFICER:
+   - Conducting Body: Reserve Bank of India (RBI).
+   - Role: Managerial position within India's central bank.
+   - Eligibility: Minimum 60% in Graduation (50% for SC/ST/PwBD). Age limit 21-30 years.
+   - Selection Process: Phase-I (Online Objective Exam), Phase-II (Economic & Social Issues, English Writing Skills, Finance & Management), Phase-III (Interview).

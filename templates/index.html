@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="description" content="CivicGuide AI - Intelligent RAG Assistant for Civic Services, Schemes, Voter ID, and Certificates">
+    <meta name="theme-color" content="#2563eb">
+    <title>CivicGuide AI - Intelligent Civic Services Assistant</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- Highlight.js for Code Highlighting -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css">
+
+    <!-- Application Stylesheet -->
+    <link rel="stylesheet" href="/static/style.css?v=3.0">
+</head>
+
+<body>
+    <!-- Mobile Sidebar Backdrop Overlay -->
+    <div id="sidebar-overlay" class="sidebar-overlay"></div>
+
+    <div class="app-container">
+
+        <!-- ==========================================
+             SIDEBAR
+        ========================================== -->
+        <aside id="sidebar" class="sidebar" aria-label="Sidebar navigation">
+
+            <!-- Brand Header -->
+            <div class="brand-wrapper">
+                <div class="brand">
+                    <div class="brand-icon-wrapper">
+                        <i class="fa-solid fa-landmark"></i>
+                    </div>
+                    <div class="brand-text">
+                        <span class="brand-title">CivicGuide</span>
+                        <span class="brand-badge">
+                            <span class="status-dot"></span>
+                            RAG Active
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="sidebar-actions">
+                <button id="new-chat-btn" class="btn-new-chat" title="Start a new conversation (Ctrl+N)">
+                    <span class="btn-label">
+                        <i class="fa-solid fa-plus"></i>
+                        <span>New Chat</span>
+                    </span>
+                    <span class="kbd-shortcut">Ctrl N</span>
+                </button>
+
+                <button id="kb-modal-btn-sidebar" class="btn-sidebar-secondary" title="View Indexed Knowledge Documents">
+                    <i class="fa-solid fa-book-atlas"></i>
+                    <span>Knowledge Base</span>
+                </button>
+            </div>
+
+            <!-- History Search Filter -->
+            <div class="history-search-wrapper">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input
+                    type="text"
+                    id="history-search"
+                    class="history-search-input"
+                    placeholder="Search history... (Ctrl+K)"
+                    autocomplete="off"
+                    aria-label="Search conversation history"
+                >
+            </div>
+
+            <!-- Chat History Container -->
+            <nav class="history-container" aria-label="Chat history">
+                <div id="history-list"></div>
+            </nav>
+
+            <!-- Sidebar Footer -->
+            <div class="sidebar-footer">
+                <div class="sidebar-stats-row">
+                    <span>Model Pipeline</span>
+                    <span class="sidebar-stats-badge">MiniLM + Cohere</span>
+                </div>
+                <div class="sidebar-bottom-controls">
+                    <button id="theme-toggle-btn" class="theme-toggle-btn" title="Toggle Light / Dark Mode">
+                        <i class="fa-solid fa-moon"></i>
+                        <span>Dark</span>
+                    </button>
+                    <button id="shortcuts-btn" class="shortcuts-btn" title="Keyboard Shortcuts (?)">
+                        <i class="fa-solid fa-keyboard"></i>
+                        <span>Shortcuts</span>
+                    </button>
+                </div>
+            </div>
+
+        </aside>
+
+        <!-- ==========================================
+             MAIN CONTENT AREA
+        ========================================== -->
+        <main class="main-content">
+
+            <!-- Top Navigation Header -->
+            <header class="chat-header">
+                <div class="header-left">
+                    <button id="sidebar-toggle-btn" class="btn-toggle-sidebar" title="Toggle Sidebar Navigation" aria-label="Toggle Sidebar">
+                        <i class="fa-solid fa-bars-staggered"></i>
+                    </button>
+                    <div class="header-info">
+                        <h1>
+                            CivicGuide AI
+                            <span class="model-pill">
+                                <i class="fa-solid fa-shield-halved"></i> Verified RAG
+                            </span>
+                        </h1>
+                        <p>Government schemes, certificates, voter services, & civic assistance</p>
+                    </div>
+                </div>
+
+                <div class="header-actions">
+                    <button id="kb-modal-btn" class="btn-header-action" title="View Indexed Sources">
+                        <i class="fa-solid fa-layer-group"></i>
+                        <span>Sources</span>
+                    </button>
+                    <button id="export-chat-btn" class="btn-header-action" title="Export conversation to Markdown">
+                        <i class="fa-solid fa-download"></i>
+                        <span>Export</span>
+                    </button>
+                    <button id="clear-chat-btn" class="btn-header-action danger" title="Clear current messages">
+                        <i class="fa-regular fa-trash-can"></i>
+                        <span>Clear</span>
+                    </button>
+                </div>
+            </header>
+
+            <!-- Chat Stream Feed -->
+            <div id="chat-messages" class="chat-messages" role="log" aria-live="polite"></div>
+
+            <!-- Input Dock -->
+            <footer class="input-dock-wrapper">
+                <div class="input-dock-container">
+
+                    <!-- Quick Prompt Chips -->
+                    <div class="quick-chips-bar" aria-label="Quick topic suggestions">
+                        <button class="chip-btn" data-query="What is the complete eligibility criteria, age limit, and exam pattern for UPSC Civil Services IAS/IPS?">
+                            <i class="fa-solid fa-landmark"></i> UPSC Civil Services
+                        </button>
+                        <button class="chip-btn" data-query="How can I join the Indian Armed Forces through NDA, CDS, AFCAT, or the Agniveer Scheme?">
+                            <i class="fa-solid fa-shield-halved"></i> Defence & Military (NDA/CDS)
+                        </button>
+                        <button class="chip-btn" data-query="Explain the selection stages, syllabus, and eligibility for RRB NTPC and Group D railway exams.">
+                            <i class="fa-solid fa-train"></i> Railway Exams (RRB)
+                        </button>
+                        <button class="chip-btn" data-query="What are the physical test standards (PET/PST) and eligibility for State Police Sub-Inspector (SI)?">
+                            <i class="fa-solid fa-user-shield"></i> Police SI & Constables
+                        </button>
+                        <button class="chip-btn" data-query="What is the difference in eligibility and exam format between JEE Main, JEE Advanced, and NEET UG?">
+                            <i class="fa-solid fa-graduation-cap"></i> JEE & NEET Guide
+                        </button>
+                        <button class="chip-btn" data-query="What are the benefits, eligibility, and application procedure for the PM-USP scholarship?">
+                            <i class="fa-solid fa-award"></i> PM-USP Scholarship
+                        </button>
+                        <button class="chip-btn" data-query="What documents are required to apply for Income, Caste, and Domicile Certificates?">
+                            <i class="fa-solid fa-file-contract"></i> Govt Certificates
+                        </button>
+                    </div>
+
+                    <!-- Input Box -->
+                    <div class="input-dock-box">
+                        <textarea
+                            id="user-input"
+                            class="chat-textarea"
+                            placeholder="Ask any question about government services, scholarships, or certificates..."
+                            rows="1"
+                            aria-label="Ask a question"
+                        ></textarea>
+
+                        <div class="input-dock-actions">
+                            <button id="mic-btn" class="btn-mic" title="Voice Input (Speech-to-Text)" aria-label="Use Microphone">
+                                <i class="fa-solid fa-microphone"></i>
+                            </button>
+                            <button id="send-btn" class="btn-send" title="Send message (Enter)" aria-label="Send message">
+                                <i class="fa-solid fa-paper-plane"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="input-disclaimer">
+                        <i class="fa-solid fa-circle-info"></i>
+                        CivicGuide AI answers strictly based on verified government records and local knowledge base documents.
+                    </div>
+                </div>
+            </footer>
+
+        </main>
+
+    </div>
+
+    <!-- ==========================================
+         KNOWLEDGE BASE MODAL
+    ========================================== -->
+    <div id="kb-modal" class="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="kb-modal-title">
+        <div class="modal-card">
+            <div class="modal-header">
+                <h2 id="kb-modal-title">
+                    <i class="fa-solid fa-book-atlas" style="color: var(--primary);"></i>
+                    Knowledge Base Explorer
+                </h2>
+                <button class="btn-modal-close" aria-label="Close modal">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>The CivicGuide RAG pipeline indexes official government guides and documents using dense semantic embeddings.</p>
+                <div id="kb-stats-grid" class="modal-stats-grid">
+                    <!-- Loaded dynamically via JS -->
+                </div>
+                <h3 style="font-size: 14px; font-weight: 700; color: var(--text-primary); margin-top: 10px;">Indexed Source Documents</h3>
+                <ul id="kb-doc-list" class="kb-doc-list">
+                    <!-- Loaded dynamically via JS -->
+                </ul>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-header-action btn-modal-close">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==========================================
+         KEYBOARD SHORTCUTS MODAL
+    ========================================== -->
+    <div id="shortcuts-modal" class="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="shortcuts-modal-title">
+        <div class="modal-card" style="max-width: 480px;">
+            <div class="modal-header">
+                <h2 id="shortcuts-modal-title">
+                    <i class="fa-solid fa-keyboard" style="color: var(--primary);"></i>
+                    Keyboard Shortcuts
+                </h2>
+                <button class="btn-modal-close" aria-label="Close modal">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <table class="shortcuts-table">
+                    <tbody>
+                        <tr>
+                            <td>New Conversation</td>
+                            <td><span class="kbd-tag">Ctrl + N</span></td>
+                        </tr>
+                        <tr>
+                            <td>Search Conversation History</td>
+                            <td><span class="kbd-tag">Ctrl + K</span></td>
+                        </tr>
+                        <tr>
+                            <td>Toggle Light / Dark Mode</td>
+                            <td><span class="kbd-tag">Ctrl + Shift + D</span></td>
+                        </tr>
+                        <tr>
+                            <td>Send Message</td>
+                            <td><span class="kbd-tag">Enter</span></td>
+                        </tr>
+                        <tr>
+                            <td>New Line in Input</td>
+                            <td><span class="kbd-tag">Shift + Enter</span></td>
+                        </tr>
+                        <tr>
+                            <td>Close Modal / Popups</td>
+                            <td><span class="kbd-tag">Esc</span></td>
+                        </tr>
+                        <tr>
+                            <td>Open Shortcuts Helper</td>
+                            <td><span class="kbd-tag">?</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-header-action btn-modal-close">Got it</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==========================================
+         CLEAR CONVERSATION CONFIRMATION MODAL
+    ========================================== -->
+    <div id="clear-modal" class="modal-backdrop" role="dialog" aria-modal="true">
+        <div class="modal-card" style="max-width: 420px;">
+            <div class="modal-header">
+                <h2>
+                    <i class="fa-solid fa-triangle-exclamation" style="color: var(--accent-rose);"></i>
+                    Clear Conversation?
+                </h2>
+                <button class="btn-modal-close" aria-label="Close modal">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Are you sure you want to clear all messages in this conversation? This action cannot be undone.</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-header-action btn-modal-close">Cancel</button>
+                <button id="confirm-clear-btn" class="btn-header-action danger" style="background: var(--accent-rose); color: white;">
+                    <i class="fa-solid fa-trash-can"></i> Clear All
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==========================================
+         SOURCE DETAIL MODAL
+    ========================================== -->
+    <div id="source-detail-modal" class="modal-backdrop" role="dialog" aria-modal="true">
+        <div class="modal-card">
+            <div class="modal-header">
+                <h2 id="source-modal-title">
+                    <i class="fa-solid fa-file-lines" style="color: var(--primary);"></i>
+                    Source Chunk Details
+                </h2>
+                <button class="btn-modal-close" aria-label="Close modal">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+            <div id="source-modal-body" class="modal-body">
+                <!-- Injected dynamically -->
+            </div>
+            <div class="modal-footer">
+                <button class="btn-header-action btn-modal-close">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==========================================
+         TOAST CONTAINER
+    ========================================== -->
+    <div id="toast-container" class="toast-container" aria-live="polite"></div>
+
+    <!-- External Libraries: Marked, DOMPurify, Highlight.js -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/3.0.8/purify.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+    <!-- Application Script -->
+    <script src="/static/script.js?v=3.0"></script>
+</body>
+</html>
