@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ page_title }} | CivicGuide AI - Indian Civil Services Information Portal</title>
+  <meta name="description" content="Accurate, authoritative guide to Indian Government Civil Services: National Scholarships, Caste Certificates, ECI Voter Services, Civic Services, and Popular Exams.">
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            govNavy: '#0f2c59',
+            govBlue: '#1e3a8a',
+            govSaffron: '#f97316',
+            govGreen: '#15803d'
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="/static/css/custom.css?v=2.1.0">
+</head>
+<body class="min-h-screen flex flex-col bg-slate-50 text-slate-800 antialiased">
+
+  <!-- Tricolor Bar -->
+  <div class="gov-tricolor-bar"></div>
+
+  <!-- Accessibility & Government Header Bar -->
+  <header class="bg-slate-900 text-slate-200 text-xs py-1.5 px-4 sm:px-8 border-b border-slate-800">
+    <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-2">
+      <div class="flex items-center gap-3">
+        <span class="inline-flex items-center gap-1.5 font-medium text-slate-300">
+          <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+          <span data-i18n="govSubtitle">भारत सरकार | Government of India Citizen Services Directory</span>
+        </span>
+        <span class="hidden md:inline text-slate-500">|</span>
+        <span class="hidden md:inline text-slate-400" data-i18n="officialRepo">Official Information & Guidelines Repository</span>
+      </div>
+
+      <!-- Accessibility & Language Controls -->
+      <div class="flex items-center gap-3">
+        <!-- Language Switcher Button -->
+        <button onclick="toggleLanguage()" id="lang-toggle-btn" class="flex items-center gap-1 bg-blue-950 hover:bg-blue-900 px-3 py-1 rounded-lg border border-blue-700 text-white font-semibold transition shadow-sm">
+          <i data-lucide="globe" class="w-3.5 h-3.5 text-amber-300"></i>
+          <span><span class="font-bold text-amber-300">EN</span> / हिंदी</span>
+        </button>
+
+        <div class="flex items-center bg-slate-800 rounded px-1.5 py-0.5 border border-slate-700">
+          <span class="text-[11px] text-slate-400 mr-2" data-i18n="textSize">Text Size:</span>
+          <button onclick="changeFontSize(-1)" title="Decrease Font Size" class="px-1.5 py-0.5 hover:bg-slate-700 rounded text-slate-300 font-bold">A-</button>
+          <button onclick="changeFontSize(0)" title="Reset Font Size" class="px-1.5 py-0.5 hover:bg-slate-700 rounded text-slate-300 font-bold">A</button>
+          <button onclick="changeFontSize(1)" title="Increase Font Size" class="px-1.5 py-0.5 hover:bg-slate-700 rounded text-slate-300 font-bold">A+</button>
+        </div>
+
+        <button onclick="toggleContrast()" title="Toggle High Contrast" class="flex items-center gap-1 bg-slate-800 hover:bg-slate-700 px-2 py-1 rounded border border-slate-700 text-slate-300 transition">
+          <i data-lucide="sun-moon" class="w-3.5 h-3.5"></i>
+          <span data-i18n="contrast">Contrast</span>
+        </button>
+
+        <a href="/faqs" class="text-amber-400 hover:underline flex items-center gap-1 font-medium">
+          <i data-lucide="shield-alert" class="w-3.5 h-3.5"></i>
+          <span data-i18n="antiFraud">Anti-Fraud Guide</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Navigation Branding Bar -->
+  <div class="bg-white border-b border-slate-200 shadow-sm sticky top-0 z-40">
+    <div class="max-w-7xl mx-auto px-4 sm:px-8 py-3 flex flex-col md:flex-row items-center justify-between gap-3">
+      
+      <!-- Brand Logo -->
+      <a href="/" class="flex items-center gap-3 group">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-blue-900 via-indigo-900 to-blue-800 text-white flex items-center justify-center shadow-md shadow-blue-900/10 group-hover:scale-105 transition">
+          <i data-lucide="landmark" class="w-5 h-5 text-amber-300"></i>
+        </div>
+        <div>
+          <div class="flex items-center gap-2">
+            <span class="text-xl font-black tracking-tight text-slate-900 font-serif" data-i18n="portalTitle">CivicGuide AI</span>
+            <span class="text-xs bg-orange-100 text-orange-800 font-bold px-2 py-0.5 rounded-full border border-orange-200">GovTech Info</span>
+          </div>
+          <p class="text-[11px] text-slate-500 font-medium">Civil Services & Schemes Information Portal</p>
+        </div>
+      </a>
+
+      <!-- Global Live Search Bar -->
+      <div class="relative w-full md:w-80 lg:w-96">
+        <div class="relative flex items-center">
+          <i data-lucide="search" class="w-4 h-4 text-slate-400 absolute left-3.5 pointer-events-none"></i>
+          <input 
+            type="text" 
+            id="global-search-input"
+            data-i18n-placeholder="searchPlaceholder"
+            placeholder="Search schemes, Form 6, Caste SC/OBC, DL, Domicile, States..." 
+            class="w-full pl-10 pr-4 py-2 bg-slate-100/80 hover:bg-slate-100 focus:bg-white border border-slate-200 focus:border-blue-600 rounded-xl text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-blue-100 transition shadow-inner"
+            autocomplete="off"
+          />
+        </div>
+        <div id="search-dropdown-results" class="hidden absolute top-full left-0 right-0 mt-2 bg-white border border-slate-200 rounded-xl shadow-2xl z-50 overflow-hidden">
+        </div>
+      </div>
+
+      <!-- =========================================================================
+           FEATURE: TOP-RIGHT PLACEMENT OF "SELECT STATE" DROPDOWN & "CHECK ELIGIBILITY"
+           ========================================================================= -->
+      <div class="flex items-center gap-2 w-full md:w-auto justify-end">
+        <!-- INTERACTIVE SELECT STATE DROPDOWN SELECTOR -->
+        <div class="relative">
+          <div class="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-bold text-slate-800 bg-emerald-50 hover:bg-emerald-100 border-2 border-emerald-600 rounded-xl transition whitespace-nowrap shadow-sm">
+            <i data-lucide="map-pin" class="w-4 h-4 text-emerald-700 flex-shrink-0"></i>
+            <select id="header-state-selector" onchange="handleNavStateChange(this.value)" class="bg-transparent text-xs font-bold text-slate-900 focus:outline-none cursor-pointer pr-1">
+              <option value="">🗺️ Select State / UT...</option>
+              {% for st in states %}
+                <option value="{{ st.id }}">{{ st.state_name }}</option>
+              {% endfor %}
+            </select>
+          </div>
+        </div>
+
+        <button onclick="openEligibilityWizard()" class="inline-flex items-center gap-1.5 px-4 py-2 text-xs font-black text-slate-950 bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-500 hover:to-amber-600 border border-amber-500 rounded-xl transition shadow-md whitespace-nowrap group">
+          <i data-lucide="sparkles" class="w-4 h-4 text-slate-950 group-hover:rotate-12 transition"></i>
+          <span data-i18n="checkEligibilityBtnTop">🎯 Check Eligibility</span>
+        </button>
+      </div>
+
+    </div>
+
+    <!-- Category Nav Links -->
+    <nav class="bg-slate-900 text-white border-t border-slate-800">
+      <div class="max-w-7xl mx-auto px-4 sm:px-8 flex items-center overflow-x-auto py-1 scrollbar-none gap-1 text-xs sm:text-sm font-medium">
+        <a href="/" class="px-3 py-2 rounded-md hover:bg-slate-800 text-slate-300 hover:text-white whitespace-nowrap flex items-center gap-1.5 transition">
+          <i data-lucide="home" class="w-4 h-4"></i>
+          <span data-i18n="navHome">Home</span>
+        </a>
+        <a href="/#chatbot-section" class="px-3 py-2 rounded-md hover:bg-slate-800 text-amber-300 hover:text-white whitespace-nowrap flex items-center gap-1.5 transition font-bold bg-slate-800/40 border border-amber-500/30">
+          <i data-lucide="bot" class="w-4 h-4 text-amber-400"></i>
+          <span>AI Chatbot</span>
+        </a>
+        <a href="/scholarships" class="px-3 py-2 rounded-md hover:bg-slate-800 text-slate-300 hover:text-white whitespace-nowrap flex items-center gap-1.5 transition">
+          <i data-lucide="graduation-cap" class="w-4 h-4 text-amber-400"></i>
+          <span data-i18n="navScholarships">Scholarships (NSP)</span>
+        </a>
+        <a href="/caste-certificate" class="px-3 py-2 rounded-md hover:bg-slate-800 text-slate-300 hover:text-white whitespace-nowrap flex items-center gap-1.5 transition">
+          <i data-lucide="award" class="w-4 h-4 text-purple-400"></i>
+          <span data-i18n="navCaste">Caste Certificate</span>
+        </a>
+        <a href="/voter-services" class="px-3 py-2 rounded-md hover:bg-slate-800 text-slate-300 hover:text-white whitespace-nowrap flex items-center gap-1.5 transition">
+          <i data-lucide="vote" class="w-4 h-4 text-orange-400"></i>
+          <span data-i18n="navVoter">Voter Services (ECI)</span>
+        </a>
+        <a href="/civic-services" class="px-3 py-2 rounded-md hover:bg-slate-800 text-slate-300 hover:text-white whitespace-nowrap flex items-center gap-1.5 transition">
+          <i data-lucide="building-2" class="w-4 h-4 text-emerald-400"></i>
+          <span data-i18n="navCivic">Civic & Municipal</span>
+        </a>
+        <a href="/state-directory" class="px-3 py-2 rounded-md hover:bg-slate-800 text-emerald-300 hover:text-white whitespace-nowrap flex items-center gap-1.5 transition font-bold">
+          <i data-lucide="map" class="w-4 h-4 text-emerald-400"></i>
+          <span data-i18n="navSelectState">Select State</span>
+        </a>
+        <a href="/checklist-builder" class="px-3 py-2 rounded-md hover:bg-slate-800 text-slate-300 hover:text-white whitespace-nowrap flex items-center gap-1.5 transition">
+          <i data-lucide="list-checks" class="w-4 h-4 text-lime-400"></i>
+          <span data-i18n="navChecklist">Doc Checklist</span>
+        </a>
+        <a href="/faqs" class="px-3 py-2 rounded-md hover:bg-slate-800 text-slate-300 hover:text-white whitespace-nowrap flex items-center gap-1.5 transition">
+          <i data-lucide="help-circle" class="w-4 h-4 text-rose-400"></i>
+          <span data-i18n="navFaqs">Grievance & FAQs</span>
+        </a>
+      </div>
+    </nav>
+  </div>
+
+  <!-- Official Security Alert Banner -->
+  <div class="bg-amber-50 border-b border-amber-200 px-4 py-2 text-xs text-amber-900 flex items-center justify-between gap-4 max-w-7xl mx-auto w-full mt-2 rounded-xl">
+    <div class="flex items-center gap-2">
+      <i data-lucide="shield-check" class="w-4 h-4 text-amber-700 flex-shrink-0"></i>
+      <span><strong>Official Sources:</strong> All government service links and guidelines strictly originate from verified <code class="bg-amber-100 px-1 py-0.5 rounded font-mono text-amber-950 font-bold">.gov.in</code> and <code class="bg-amber-100 px-1 py-0.5 rounded font-mono text-amber-950 font-bold">.nic.in</code> domains.</span>
+    </div>
+    <a href="/faqs" class="text-amber-800 underline font-semibold whitespace-nowrap hidden sm:inline">Official Sources →</a>
+  </div>
+
+  <!-- Main Content Container -->
+  <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-8 py-6">
+    {% block content %}{% endblock %}
+  </main>
+
+  <!-- =========================================================================
+       FLOATING AI CHATBOT LAUNCHER (BOTTOM RIGHT)
+       ========================================================================= -->
+  <div class="fixed bottom-6 right-6 z-40 no-print">
+    <button onclick="toggleFloatingChatbot()" id="floating-chat-btn" class="w-14 h-14 rounded-full bg-gradient-to-tr from-blue-900 via-indigo-900 to-blue-700 text-white flex items-center justify-center shadow-2xl hover:scale-110 active:scale-95 transition duration-200 border-2 border-amber-400 group" title="Chat with JanSeva AI">
+      <i data-lucide="bot" class="w-7 h-7 text-amber-300 group-hover:rotate-12 transition"></i>
+    </button>
+  </div>
+
+  <!-- Floating Chatbot Drawer Modal -->
+  <div id="floating-chatbot-drawer" class="hidden fixed bottom-24 right-6 z-50 w-full max-w-md bg-white rounded-3xl shadow-2xl border border-slate-200 overflow-hidden flex flex-col h-[520px] transition duration-300">
+    <!-- Chat Header -->
+    <div class="bg-gradient-to-r from-slate-900 to-blue-950 text-white p-4 flex items-center justify-between border-b border-slate-800">
+      <div class="flex items-center gap-2.5">
+        <div class="w-8 h-8 rounded-xl bg-amber-400 text-slate-950 flex items-center justify-center font-bold">
+          <i data-lucide="bot" class="w-5 h-5"></i>
+        </div>
+        <div>
+          <h4 class="font-bold text-sm text-white">CivicGuide AI Assistant</h4>
+          <span class="text-[10px] text-emerald-400 flex items-center gap-1 font-medium">
+            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+            Online &bull; Official Govt Knowledge Base
+          </span>
+        </div>
+      </div>
+      <button onclick="toggleFloatingChatbot()" class="text-slate-400 hover:text-white p-1 rounded-lg">
+        <i data-lucide="x" class="w-5 h-5"></i>
+      </button>
+    </div>
+
+    <!-- Chat Messages Body -->
+    <div id="drawer-chat-messages" class="flex-1 p-4 overflow-y-auto space-y-3 bg-slate-50 text-xs">
+      <div class="bg-white p-3.5 rounded-2xl border border-slate-200 shadow-sm max-w-[85%] text-slate-800 leading-relaxed">
+        <div class="font-bold text-blue-900 mb-1 flex items-center gap-1">
+          <i data-lucide="sparkles" class="w-3.5 h-3.5 text-amber-500"></i>
+          <span>Namaste! / नमस्ते!</span>
+        </div>
+        I am your CivicGuide AI Assistant. Ask me anything about competitive exams (UPSC/SSC/State PSCs), scholarships, caste certificates, voter registration, driving licenses, or state welfare schemes!
+      </div>
+    </div>
+
+    <!-- Chat Input Footer -->
+    <div class="p-3 bg-white border-t border-slate-200">
+      <form onsubmit="handleDrawerChatSubmit(event)" class="flex gap-2">
+        <input 
+          type="text" 
+          id="drawer-chat-input"
+          placeholder="Ask a question (e.g. UPSC eligibility, OBC criteria, NSP OTR)..." 
+          class="flex-1 bg-slate-100 border border-slate-200 rounded-xl px-3 py-2 text-xs focus:outline-none focus:ring-2 focus:ring-blue-600"
+          autocomplete="off"
+        />
+        <button type="submit" class="bg-blue-900 hover:bg-blue-800 text-white font-bold p-2.5 rounded-xl transition">
+          <i data-lucide="send" class="w-4 h-4"></i>
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       STEP-BY-STEP ELIGIBILITY WIZARD MODAL
+       ========================================================================= -->
+  <div id="eligibility-wizard-modal" class="hidden fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-md flex items-center justify-center p-4 overflow-y-auto">
+    <div class="bg-white rounded-3xl max-w-2xl w-full p-6 sm:p-8 shadow-2xl border border-slate-200 relative my-8">
+      
+      <!-- Close Button -->
+      <button onclick="closeEligibilityWizard()" class="absolute top-5 right-5 text-slate-400 hover:text-slate-700 bg-slate-100 p-2 rounded-full transition">
+        <i data-lucide="x" class="w-5 h-5"></i>
+      </button>
+
+      <!-- Modal Header -->
+      <div class="mb-6 pb-4 border-b border-slate-100">
+        <div class="flex items-center justify-between mb-2">
+          <div class="flex items-center gap-2">
+            <span class="w-3 h-3 rounded-full bg-amber-400 animate-ping"></span>
+            <span class="text-xs font-bold text-slate-500 uppercase tracking-wider">Citizen Eligibility Questionnaire</span>
+          </div>
+          <span id="wizard-progress-text" class="text-xs font-bold text-blue-900 bg-blue-50 px-2.5 py-0.5 rounded-full border border-blue-200">Step 1 of 6</span>
+        </div>
+        <!-- Progress Bar -->
+        <div class="w-full bg-slate-100 rounded-full h-2 overflow-hidden">
+          <div id="wizard-progress-bar" class="bg-gradient-to-r from-blue-600 to-indigo-600 h-2 rounded-full transition-all duration-300" style="width: 16%"></div>
+        </div>
+      </div>
+
+      <!-- Step Content Area (Rendered via JS) -->
+      <div id="wizard-step-content" class="min-h-[280px]">
+      </div>
+
+      <!-- Modal Footer Controls -->
+      <div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between">
+        <button id="wizard-back-btn" onclick="prevWizardStep()" style="display: none;" class="text-xs font-bold text-slate-600 hover:text-slate-900 flex items-center gap-1 px-3 py-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 transition">
+          <i data-lucide="arrow-left" class="w-3.5 h-3.5"></i>
+          <span>Previous Question</span>
+        </button>
+        <button onclick="closeEligibilityWizard()" class="text-xs text-slate-400 hover:text-slate-600 ml-auto">
+          Exit Wizard
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       INTERACTIVE STATE DETAILS POPUP MODAL (TRIGGERED BY DROPDOWN)
+       ========================================================================= -->
+  <div id="state-details-modal" class="hidden fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-md flex items-center justify-center p-4 overflow-y-auto">
+    <div class="bg-white rounded-3xl max-w-3xl w-full p-6 sm:p-8 shadow-2xl border border-slate-200 relative my-8 max-h-[90vh] overflow-y-auto">
+      
+      <!-- Close Button -->
+      <button onclick="closeStateDetailsModal()" class="absolute top-5 right-5 text-slate-400 hover:text-slate-700 bg-slate-100 hover:bg-slate-200 p-2 rounded-full transition z-10">
+        <i data-lucide="x" class="w-5 h-5"></i>
+      </button>
+
+      <!-- Modal Body (Injected dynamically via JS) -->
+      <div id="state-modal-content">
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="bg-slate-900 text-slate-300 mt-16 border-t-4 border-amber-500">
+    <div class="max-w-7xl mx-auto px-4 sm:px-8 py-12">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+        
+        <!-- About Portal -->
+        <div>
+          <div class="flex items-center gap-2.5 mb-3">
+            <div class="w-8 h-8 rounded-lg bg-blue-600 text-white flex items-center justify-center font-bold">
+              <i data-lucide="landmark" class="w-4 h-4 text-amber-300"></i>
+            </div>
+            <span class="text-lg font-bold text-white font-serif">CivicGuide AI Portal</span>
+          </div>
+          <p class="text-xs text-slate-400 leading-relaxed mb-4">
+            An authoritative, non-commercial public education knowledge base providing verified guidelines for Indian Government civil services, scholarships, exams, and welfare programs.
+          </p>
+          <div class="text-[11px] text-slate-400 flex items-center gap-1">
+            <i data-lucide="check-circle" class="w-3.5 h-3.5 text-emerald-400"></i>
+            <span>Verified with Official Gazettes & Portals</span>
+          </div>
+        </div>
+
+        <!-- Four Pillars -->
+        <div>
+          <h4 class="text-xs font-bold text-white uppercase tracking-wider mb-3">Key Citizen Portals</h4>
+          <ul class="space-y-2 text-xs">
+            <li><a href="/scholarships" class="hover:text-amber-400 transition flex items-center gap-1.5"><i data-lucide="chevron-right" class="w-3 h-3"></i> National Scholarships (NSP)</a></li>
+            <li><a href="/caste-certificate" class="hover:text-amber-400 transition flex items-center gap-1.5"><i data-lucide="chevron-right" class="w-3 h-3"></i> Caste Certificates (SC/ST/OBC/EWS)</a></li>
+            <li><a href="/voter-services" class="hover:text-amber-400 transition flex items-center gap-1.5"><i data-lucide="chevron-right" class="w-3 h-3"></i> ECI Voter Services & Form 6</a></li>
+            <li><a href="/civic-services" class="hover:text-amber-400 transition flex items-center gap-1.5"><i data-lucide="chevron-right" class="w-3 h-3"></i> Birth/Death & Driving License</a></li>
+            <li><a href="/state-directory" class="hover:text-amber-400 transition flex items-center gap-1.5"><i data-lucide="chevron-right" class="w-3 h-3"></i> Select State (28 States & 8 UTs)</a></li>
+          </ul>
+        </div>
+
+        <!-- Emergency Helplines -->
+        <div>
+          <h4 class="text-xs font-bold text-white uppercase tracking-wider mb-3">National Citizen Helplines</h4>
+          <ul class="space-y-2 text-xs">
+            <li class="flex items-center justify-between bg-slate-800/80 p-2 rounded border border-slate-700">
+              <span>ECI Voter Helpline:</span>
+              <span class="font-bold text-orange-400 font-mono">1950</span>
+            </li>
+            <li class="flex items-center justify-between bg-slate-800/80 p-2 rounded border border-slate-700">
+              <span>National Consumer Helpline:</span>
+              <span class="font-bold text-orange-400 font-mono">1915</span>
+            </li>
+            <li class="flex items-center justify-between bg-slate-800/80 p-2 rounded border border-slate-700">
+              <span>CPGRAMS Public Grievance:</span>
+              <span class="font-bold text-orange-400 font-mono">1800-11-0031</span>
+            </li>
+            <li class="flex items-center justify-between bg-slate-800/80 p-2 rounded border border-slate-700">
+              <span>Cyber Crime Helpline:</span>
+              <span class="font-bold text-orange-400 font-mono">1930</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Direct Government Official Links -->
+        <div>
+          <h4 class="text-xs font-bold text-white uppercase tracking-wider mb-3">Verified Official Sources</h4>
+          <ul class="space-y-2 text-xs">
+            <li><a href="https://scholarships.gov.in" target="_blank" rel="noopener noreferrer" class="hover:text-blue-400 transition flex items-center gap-1"><span>scholarships.gov.in (NSP)</span> <i data-lucide="external-link" class="w-3 h-3"></i></a></li>
+            <li><a href="https://voters.eci.gov.in" target="_blank" rel="noopener noreferrer" class="hover:text-blue-400 transition flex items-center gap-1"><span>voters.eci.gov.in (ECI)</span> <i data-lucide="external-link" class="w-3 h-3"></i></a></li>
+            <li><a href="https://parivahan.gov.in" target="_blank" rel="noopener noreferrer" class="hover:text-blue-400 transition flex items-center gap-1"><span>parivahan.gov.in (MoRTH)</span> <i data-lucide="external-link" class="w-3 h-3"></i></a></li>
+            <li><a href="https://upsc.gov.in" target="_blank" rel="noopener noreferrer" class="hover:text-blue-400 transition flex items-center gap-1"><span>upsc.gov.in (Civil Services)</span> <i data-lucide="external-link" class="w-3 h-3"></i></a></li>
+            <li><a href="https://pgportal.gov.in" target="_blank" rel="noopener noreferrer" class="hover:text-blue-400 transition flex items-center gap-1"><span>pgportal.gov.in (CPGRAMS)</span> <i data-lucide="external-link" class="w-3 h-3"></i></a></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="mt-8 pt-6 border-t border-slate-800 text-center text-xs text-slate-500">
+        <p>CivicGuide AI Information Portal &bull; Built in Python for the Citizens of India &bull; Non-commercial public education repository.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    window.ALL_STATES_DB = {{ states | tojson | safe if states else '[]' }};
+  </script>
+  <script src="/static/js/app.js?v=2.2.0"></script>
+  <script>
+    lucide.createIcons();
+  </script>
+</body>
+</html>

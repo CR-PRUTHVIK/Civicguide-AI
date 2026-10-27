@@ -1,0 +1,321 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="mb-8">
+  <div class="flex items-center gap-2 text-xs text-slate-500 mb-1">
+    <a href="/" class="hover:underline">Home</a>
+    <span>/</span>
+    <span class="text-slate-800 font-semibold">Document Checklist Builder</span>
+  </div>
+  <h1 class="text-3xl font-black text-slate-900 tracking-tight font-serif">Interactive Document Checklist Builder</h1>
+  <p class="text-sm text-slate-600 mt-1">Select the civil service you want to apply for and generate a personalized, printable readiness checklist.</p>
+</div>
+
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-14">
+  
+  <!-- Left Side: Service Selector & Controls -->
+  <div class="lg:col-span-1 space-y-6">
+    <div class="bg-white rounded-3xl p-6 border border-slate-200 shadow-sm">
+      <h2 class="text-base font-bold text-slate-900 mb-4 flex items-center gap-2">
+        <i data-lucide="layers" class="w-5 h-5 text-blue-900"></i>
+        <span>1. Select Citizen Service</span>
+      </h2>
+
+      <div class="space-y-4">
+        <div>
+          <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">Target Civil Service</label>
+          <select id="checklist-service-select" onchange="loadChecklist()" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-3 py-2.5 text-xs font-medium focus:ring-2 focus:ring-blue-500 focus:outline-none">
+            <optgroup label="Caste Certificates">
+              <option value="caste-sc" selected>Caste Certificate (Scheduled Caste - SC)</option>
+              <option value="caste-st">Caste Certificate (Scheduled Tribe - ST)</option>
+              <option value="caste-obc-ncl">Caste Certificate (OBC Non-Creamy Layer)</option>
+              <option value="caste-ews">Income & Asset Certificate (EWS)</option>
+            </optgroup>
+            <optgroup label="Voter Services (ECI)">
+              <option value="voter-form-6">New Voter Registration (Form 6 - 18+)</option>
+              <option value="voter-form-8">Correction / Shifting / Replacement (Form 8)</option>
+              <option value="voter-form-6a">Overseas NRI Voter (Form 6A)</option>
+            </optgroup>
+            <optgroup label="Civic & Municipal">
+              <option value="civic-domicile">Domicile / Residence Certificate</option>
+              <option value="civic-income">Income Certificate</option>
+              <option value="civic-dl">Driving License / Learner License (Parivahan)</option>
+              <option value="civic-birth">Birth / Death Certificate (CRS)</option>
+              <option value="civic-ration">Ration Card (NFSA)</option>
+            </optgroup>
+            <optgroup label="Scholarships">
+              <option value="scholarship-nsp">NSP Post-Matric Scholarship</option>
+              <option value="scholarship-aicte">AICTE Pragati / Saksham Scheme</option>
+              <option value="scholarship-csss">Central Sector Scheme (CSSS)</option>
+            </optgroup>
+          </select>
+        </div>
+
+        <div class="p-4 bg-amber-50 rounded-2xl border border-amber-200 text-xs text-amber-900">
+          <div class="font-bold flex items-center gap-1.5 mb-1">
+            <i data-lucide="info" class="w-4 h-4 text-amber-700"></i>
+            <span>Document Guidelines</span>
+          </div>
+          <p class="leading-relaxed">
+            Ensure scanned PDF/JPEG files are under 200 KB each and clearly legible with proper official stamps.
+          </p>
+        </div>
+
+        <button onclick="window.print()" class="w-full bg-blue-900 hover:bg-blue-800 text-white font-bold py-2.5 px-4 rounded-xl text-xs transition flex items-center justify-center gap-2 shadow">
+          <i data-lucide="printer" class="w-4 h-4"></i>
+          <span>Print / Save PDF Checklist</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Right Side: Interactive Checklist & Progress -->
+  <div class="lg:col-span-2 space-y-6">
+    <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-sm">
+      
+      <!-- Top Title & Progress Bar -->
+      <div class="mb-6 pb-6 border-b border-slate-100">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-3">
+          <div>
+            <span class="text-xs font-bold text-purple-800 bg-purple-100 px-2.5 py-0.5 rounded-full" id="checklist-category-badge">Caste Services</span>
+            <h2 class="text-xl font-bold text-slate-900 mt-1 font-serif" id="checklist-title">Checklist for Caste Certificate (SC)</h2>
+          </div>
+          <span class="text-xs font-bold text-emerald-800 bg-emerald-50 px-3 py-1 rounded-xl border border-emerald-200 self-start sm:self-center" id="checklist-progress-text">
+            0 of 5 ready (0%)
+          </span>
+        </div>
+
+        <!-- Progress bar visual -->
+        <div class="w-full bg-slate-100 rounded-full h-2.5 overflow-hidden border border-slate-200">
+          <div id="checklist-progress-bar" class="bg-emerald-500 h-2.5 rounded-full transition-all duration-300" style="width: 0%"></div>
+        </div>
+      </div>
+
+      <!-- Checklist Items Container -->
+      <div id="checklist-items-container" class="space-y-3">
+        <!-- Injected via JavaScript -->
+      </div>
+
+      <!-- Preparation Advice Box -->
+      <div class="mt-8 pt-6 border-t border-slate-100 text-xs text-slate-500" id="checklist-advice">
+        <!-- Injected via JavaScript -->
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+<script>
+const CHECKLISTS_DB = {
+  "caste-sc": {
+    title: "Caste Certificate (Scheduled Caste - SC)",
+    category: "Caste Services",
+    items: [
+      { doc: "Proof of Identity", note: "Aadhaar Card, Voter ID Card, or Passport", mandatory: true },
+      { doc: "Proof of Present & Permanent Address", note: "Ration card, Electricity bill, or Registered House deed", mandatory: true },
+      { doc: "Proof of Paternal Ancestry / Caste", note: "Father's/Grandfather's caste certificate, School Leaving Certificate (TC), or Pre-1950 land record (Khatauni/Khatian)", mandatory: true },
+      { doc: "Self-Declaration / Affidavit", note: "Affidavit affirming belonging to SC community notified under Constitution Order 1950", mandatory: true },
+      { doc: "Recent Passport Size Photographs", note: "2 color photos on white background (< 50KB for online upload)", mandatory: true }
+    ],
+    advice: "Tip: SC certificate validity is lifetime. For central government recruitment (UPSC/SSC), ensure you obtain the certificate in Central Annexure format."
+  },
+  "caste-st": {
+    title: "Caste Certificate (Scheduled Tribe - ST)",
+    category: "Caste Services",
+    items: [
+      { doc: "Proof of Identity", note: "Aadhaar Card / Voter ID Card", mandatory: true },
+      { doc: "Proof of Tribal Lineage / Ancestry", note: "Father's ST certificate, Traditional tribal land pattas, or Village Council certificate", mandatory: true },
+      { doc: "Address Proof in Notified Tribal Area", note: "Permanent residence proof in state/district", mandatory: true },
+      { doc: "Self-Declaration Affidavit", note: "Affirmation of tribal lineage", mandatory: true },
+      { doc: "Passport Photographs", note: "Recent color photographs", mandatory: true }
+    ],
+    advice: "Tip: In Sixth Schedule areas, obtain the endorsement of the Autonomous District Council (ADC) or Traditional Village Head."
+  },
+  "caste-obc-ncl": {
+    title: "OBC Non-Creamy Layer (NCL) Certificate",
+    category: "OBC Services",
+    items: [
+      { doc: "Proof of Paternal Caste", note: "Father's OBC certificate, School TC, or 1993 land revenue record", mandatory: true },
+      { doc: "Parental Income Proof (Last 3 Financial Years)", note: "Salary slips, Form 16, ITR copies, or Tehsildar Income Certificate showing annual income under ₹8 Lakhs", mandatory: true },
+      { doc: "Proof of Identity & Address", note: "Aadhaar Card and Electricity / Ration Card", mandatory: true },
+      { doc: "Non-Creamy Layer Self-Declaration", note: "Declaration that parents do not fall under Creamy Layer (Group A/B before 40, Constitutional posts, etc.)", mandatory: true },
+      { doc: "Passport Size Photograph", note: "Recent photograph of applicant", mandatory: true }
+    ],
+    advice: "Note: OBC-NCL certificate is valid for only ONE Financial Year (1 April - 31 March) and must be renewed annually with fresh income proof."
+  },
+  "caste-ews": {
+    title: "Economically Weaker Section (EWS) Certificate",
+    category: "EWS Services",
+    items: [
+      { doc: "Proof of Family Income (All Sources)", note: "ITR / Salary slip / Patwari agricultural income certificate (< ₹8 Lakhs/yr)", mandatory: true },
+      { doc: "Property & Land Asset Documents", note: "Agricultural land records (< 5 acres) and residential flat records (< 1000 sq ft)", mandatory: true },
+      { doc: "Proof of General Category / Identity", note: "Aadhaar card and declaration of not availing SC/ST/OBC quota", mandatory: true },
+      { doc: "Proof of Permanent Residence", note: "Domicile certificate or 3+ years electricity/property tax bills", mandatory: true },
+      { doc: "Passport Size Photographs", note: "2 recent color photos", mandatory: true }
+    ],
+    advice: "Note: EWS certificate is valid for 1 Financial Year for the year of issuance based on the previous year's income."
+  },
+  "voter-form-6": {
+    title: "New Voter Registration (Form 6)",
+    category: "Voter Services (ECI)",
+    items: [
+      { doc: "Proof of Age (Any ONE)", note: "Birth Certificate, Aadhaar Card, PAN Card, Driving License, or Class 10/12 Marksheet", mandatory: true },
+      { doc: "Proof of Ordinary Residence (Any ONE)", note: "Aadhaar Card, Water/Electricity/Gas bill (min 1 yr), Bank Passbook, or Indian Passport", mandatory: true },
+      { doc: "Passport Size Color Photograph", note: "Clear photo on white background (JPEG < 2MB)", mandatory: true },
+      { doc: "Existing Family Member's EPIC Details (Optional)", note: "Helps Booth Level Officer tag you in the same polling booth as your family", mandatory: false }
+    ],
+    advice: "Tip: Apply online at voters.eci.gov.in. A Booth Level Officer (BLO) will visit your residence for physical verification within 15-21 days."
+  },
+  "voter-form-8": {
+    title: "Voter Correction / Shifting / Replacement (Form 8)",
+    category: "Voter Services (ECI)",
+    items: [
+      { doc: "Existing EPIC (Voter ID) Number", note: "10-digit alphanumeric EPIC number", mandatory: true },
+      { doc: "Documentary Proof for Correction", note: "Aadhaar/Class 10 cert for Name/DOB; Marriage certificate for surname change", mandatory: true },
+      { doc: "Proof of New Residential Address", note: "Required if shifting residence to a new house/constituency", mandatory: true },
+      { doc: "Police FIR / NCR Copy (If replacing lost card)", note: "Only required if replacement is requested due to loss/theft", mandatory: false }
+    ],
+    advice: "Note: The updated physical EPIC card with holographic security is dispatched via Speed Post free of cost by the Election Commission."
+  },
+  "voter-form-6a": {
+    title: "Overseas / NRI Voter Registration (Form 6A)",
+    category: "Voter Services (ECI)",
+    items: [
+      { doc: "Copy of Valid Indian Passport", note: "Pages containing photograph, address in India, and valid Visa endorsement", mandatory: true },
+      { doc: "Recent Passport Size Photograph", note: "Color photo with white background", mandatory: true },
+      { doc: "Proof of Foreign Residence Address", note: "Utility bill or residence permit in foreign country", mandatory: true }
+    ],
+    advice: "Overseas electors vote in person at their designated polling booth in India by presenting original Indian Passport."
+  },
+  "civic-domicile": {
+    title: "Domicile / Permanent Residence Certificate",
+    category: "Civic Services",
+    items: [
+      { doc: "Proof of Continuous Residence", note: "School leaving certificates, electricity bills for 3-15 consecutive years, or registered house sale deed", mandatory: true },
+      { doc: "Identity Proof", note: "Aadhaar Card, Voter ID, or Passport", mandatory: true },
+      { doc: "Parents' Domicile / Land Records", note: "Father's or mother's permanent residence proof", mandatory: true },
+      { doc: "Self-Declaration Affidavit", note: "Affirming continuous stay and non-possession of domicile of another state", mandatory: true }
+    ],
+    advice: "Processing time is typically 7 to 15 days on state e-District portals."
+  },
+  "civic-income": {
+    title: "Income Certificate (आय प्रमाण पत्र)",
+    category: "Civic Services",
+    items: [
+      { doc: "Salary Slips / Form 16 / ITR", note: "For salaried or organized sector workers", mandatory: true },
+      { doc: "Land Revenue Records (Khasra/Khatauni/7-12)", note: "For agricultural families to estimate farm income", mandatory: false },
+      { doc: "Self-Declaration of Income on Stamp Paper", note: "For daily wage or unorganized workers", mandatory: true },
+      { doc: "Aadhaar Card and Ration Card", note: "To establish family composition", mandatory: true }
+    ],
+    advice: "Income certificate is generally valid for 1 Financial Year and required for all scholarship fee concessions."
+  },
+  "civic-dl": {
+    title: "Driving License / Learner's License (Parivahan)",
+    category: "Transport Services",
+    items: [
+      { doc: "Age Proof", note: "Aadhaar, PAN Card, Birth Certificate, or Class 10 Certificate", mandatory: true },
+      { doc: "Address Proof", note: "Aadhaar Card, Electricity Bill, or Passport", mandatory: true },
+      { doc: "Form 1 (Self-Declaration of Physical Fitness)", note: "Filled online on Parivahan Sarathi", mandatory: true },
+      { doc: "Form 1A (Medical Certificate)", note: "Required for transport/commercial license or applicants age > 40", mandatory: false },
+      { doc: "Active Learner's License (For Permanent DL)", note: "Must be min 30 days old and max 180 days old", mandatory: true }
+    ],
+    advice: "Take the online contactless Learner License test from home via Aadhaar authentication at parivahan.gov.in."
+  },
+  "civic-birth": {
+    title: "Birth / Death Registration (RBD Act)",
+    category: "Civil Registration System",
+    items: [
+      { doc: "Hospital Discharge Summary / Institutional Birth-Death Slip", note: "Issued by registered medical officer", mandatory: true },
+      { doc: "Parents' / Informant's Aadhaar Cards", note: "Identity & address proof", mandatory: true },
+      { doc: "Parents' Marriage Certificate (Optional)", note: "Supporting proof", mandatory: false },
+      { doc: "Non-Availability Certificate (NAC) + SDM Order", note: "Only required for delayed registration after 1 year", mandatory: false }
+    ],
+    advice: "Registration within 21 days is completely free under the Registration of Births and Deaths Act."
+  },
+  "civic-ration": {
+    title: "Ration Card (NFSA / State PDS)",
+    category: "Food & Civil Supplies",
+    items: [
+      { doc: "Aadhaar Cards of All Family Members", note: "Mandatory for biometric seeding", mandatory: true },
+      { doc: "Income Certificate of Family", note: "To determine AAY (Yellow) or PHH (Priority) eligibility", mandatory: true },
+      { doc: "Proof of Residence (Electricity bill/Rent deed)", note: "Current living address proof", mandatory: true },
+      { doc: "LPG Connection Proof", note: "Consumer number or declaration of no gas connection", mandatory: true },
+      { doc: "Joint Photo of Female Head of Household", note: "Section 13 of NFSA mandates eldest female as head", mandatory: true }
+    ],
+    advice: "Under One Nation One Ration Card (ONORC), you can lift subsidized foodgrains anywhere in India using Aadhaar biometric authentication."
+  },
+  "scholarship-nsp": {
+    title: "National Scholarship Portal (NSP) Post-Matric",
+    category: "Scholarships",
+    items: [
+      { doc: "NSP 14-Digit OTR Number", note: "Generated via NSP OTR App with Aadhaar Face Auth", mandatory: true },
+      { doc: "Aadhaar-NPCI Seeded Bank Account Details", note: "Active bank passbook seeded with Aadhaar", mandatory: true },
+      { doc: "Valid Caste Certificate (SC/ST/OBC)", note: "Issued by Revenue Authority", mandatory: true },
+      { doc: "Family Income Certificate", note: "Issued for current financial year (< ₹2.5L / ₹4.5L)", mandatory: true },
+      { doc: "Previous Year Passing Marksheet", note: "Marksheet of qualifying examination", mandatory: true },
+      { doc: "Current Year College Admission Fee Receipt & Bonafide", note: "Stamped by College Principal/Nodal Officer", mandatory: true }
+    ],
+    advice: "Submit hard copy with receipts to your college INO immediately after online submission."
+  },
+  "scholarship-aicte": {
+    title: "AICTE Pragati / Saksham Scheme",
+    category: "Technical Scholarships",
+    items: [
+      { doc: "Centralized Admission Allotment Letter", note: "State CET / JEE allotment into AICTE-approved institution", mandatory: true },
+      { doc: "Class 10 & 12 / Diploma Marksheets", note: "Proof of academic qualification", mandatory: true },
+      { doc: "Income Certificate (< ₹8 Lakhs)", note: "Parental income proof", mandatory: true },
+      { doc: "Two-Daughters Family Declaration", note: "For Pragati girl students", mandatory: true },
+      { doc: "UDID / Disability Certificate (>= 40%)", note: "For Saksham PwD applicants", mandatory: false }
+    ],
+    advice: "Provides ₹50,000 per year for tuition, computer, and books."
+  },
+  "scholarship-csss": {
+    title: "Central Sector Scheme for College Students (CSSS)",
+    category: "Higher Education Merit",
+    items: [
+      { doc: "Class 12th Board Marksheet (> 80th Percentile)", note: "Eligible percentile advisory list from State Board/CBSE/ICSE", mandatory: true },
+      { doc: "College Admission & Bonafide Certificate", note: "Regular degree course in recognized university", mandatory: true },
+      { doc: "Income Certificate (< ₹4.5 Lakhs)", note: "Parental annual income proof", mandatory: true },
+      { doc: "Aadhaar Card & Bank Account", note: "Aadhaar seeded bank account", mandatory: true }
+    ],
+    advice: "Provides ₹12,000/yr for graduation (3 yrs) and ₹20,000/yr for post-graduation."
+  }
+};
+
+function loadChecklist() {
+  const serviceKey = document.getElementById('checklist-service-select').value;
+  const data = CHECKLISTS_DB[serviceKey];
+  if (!data) return;
+
+  document.getElementById('checklist-title').textContent = `Checklist for ${data.title}`;
+  document.getElementById('checklist-category-badge').textContent = data.category;
+  document.getElementById('checklist-advice').innerHTML = `<strong>Statutory Guidance:</strong> ${data.advice}`;
+
+  const container = document.getElementById('checklist-items-container');
+  let html = '';
+
+  data.items.forEach((item, index) => {
+    html += `
+      <label class="checklist-item flex items-start gap-3 p-3.5 bg-slate-50 hover:bg-slate-100/80 border border-slate-200 rounded-2xl cursor-pointer transition">
+        <input type="checkbox" class="checklist-checkbox w-4 h-4 mt-0.5 rounded text-blue-900 focus:ring-blue-500 border-slate-300">
+        <div class="flex-1">
+          <div class="flex items-center justify-between gap-2">
+            <span class="text-xs sm:text-sm font-bold text-slate-900">${escapeHtml(item.doc)}</span>
+            ${item.mandatory ? '<span class="text-[10px] font-bold text-rose-700 bg-rose-50 px-2 py-0.5 rounded border border-rose-200">Mandatory</span>' : '<span class="text-[10px] font-semibold text-slate-500 bg-slate-200 px-2 py-0.5 rounded">Optional</span>'}
+          </div>
+          <p class="text-xs text-slate-600 mt-0.5">${escapeHtml(item.note)}</p>
+        </div>
+      </label>
+    `;
+  });
+
+  container.innerHTML = html;
+  initChecklistTracker();
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  loadChecklist();
+});
+</script>
+{% endblock %}

@@ -1,0 +1,146 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="mb-8">
+  <div class="flex items-center gap-2 text-xs text-slate-500 mb-1">
+    <a href="/" class="hover:underline">Home</a>
+    <span>/</span>
+    <span class="text-slate-800 font-semibold" data-i18n="navSelectState">Select State</span>
+  </div>
+  <h1 class="text-3xl font-black text-slate-900 tracking-tight font-serif">
+    <span class="lang-en">Select State: 28 States & 8 UTs Services, Welfares & Scholarships</span>
+    <span class="lang-hi font-hindi" style="display: none;">राज्य चुनें: 28 राज्यों व 8 केंद्र शासित प्रदेशों की योजनाएं एवं सेवाएं</span>
+  </h1>
+  <p class="text-sm text-slate-600 mt-1">Verified official links to e-District portals, state welfare programs, and state higher education scholarship portals across India.</p>
+</div>
+
+<!-- Quick State Dropdown Selector Banner -->
+<div class="bg-gradient-to-r from-emerald-900 via-teal-900 to-slate-900 text-white rounded-2xl p-5 border border-emerald-800 shadow-sm mb-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+  <div>
+    <h3 class="font-bold text-base text-white mb-0.5 flex items-center gap-2">
+      <i data-lucide="map-pin" class="w-5 h-5 text-emerald-400"></i>
+      <span>Quick State Dropdown Selector</span>
+    </h3>
+    <p class="text-xs text-emerald-200">Select any state from the dropdown to instantly view its welfare schemes, scholarships, and e-District services:</p>
+  </div>
+  <div class="w-full sm:w-80">
+    <select onchange="if(this.value) { openStateDetailsModal(this.value); this.value=''; }" class="w-full bg-slate-900 border-2 border-emerald-400 text-white font-bold text-xs rounded-xl px-3 py-2.5 focus:outline-none cursor-pointer">
+      <option value="">🗺️ Choose State / UT from Dropdown...</option>
+      {% for st in all_states %}
+        <option value="{{ st.id }}">{{ st.state_name }} ({{ st.type }})</option>
+      {% endfor %}
+    </select>
+  </div>
+</div>
+
+<!-- Search & Filter Bar -->
+<div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm mb-8">
+  <form method="GET" action="/state-directory" class="grid grid-cols-1 sm:grid-cols-3 gap-4 items-end">
+    <div class="sm:col-span-2">
+      <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">Search by State Name, Scheme or Service</label>
+      <div class="relative">
+        <i data-lucide="search" class="w-4 h-4 text-slate-400 absolute left-3.5 top-3 pointer-events-none"></i>
+        <input 
+          type="text" 
+          name="q" 
+          value="{{ search_query }}"
+          placeholder="Type Maharashtra, UP, Bihar, Ladki Bahin, Kanya Sumangala, Ration..." 
+          class="w-full pl-10 pr-4 py-2 bg-slate-50 border border-slate-300 rounded-xl text-xs focus:ring-2 focus:ring-blue-500 focus:outline-none"
+        />
+      </div>
+    </div>
+
+    <div class="flex items-center gap-2">
+      <button type="submit" class="flex-1 bg-blue-900 hover:bg-blue-800 text-white font-bold py-2.5 px-4 rounded-xl text-xs transition shadow">
+        Filter States
+      </button>
+      <a href="/state-directory" class="bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold py-2.5 px-3 rounded-xl text-xs transition">
+        Reset
+      </a>
+    </div>
+  </form>
+</div>
+
+<!-- State Cards Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-14">
+  {% for st in states %}
+  <div id="{{ st.id }}" class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm hover:shadow-md transition flex flex-col justify-between">
+    
+    <div>
+      <div class="flex items-center justify-between gap-2 mb-2 pb-2 border-b border-slate-100">
+        <div>
+          <h3 class="text-lg font-bold text-slate-900 font-serif">
+            <span class="lang-en">{{ st.state_name }}</span>
+            <span class="lang-hi font-hindi" style="display: none;">{{ st.state_name_hi or st.state_name }}</span>
+          </h3>
+        </div>
+        <span class="text-[11px] font-bold px-2 py-0.5 rounded-full {% if st.type == 'State' %}bg-blue-50 text-blue-800 border border-blue-200{% else %}bg-purple-50 text-purple-800 border border-purple-200{% endif %}">
+          {{ st.type }}
+        </span>
+      </div>
+
+      <div class="mb-3">
+        <span class="text-xs font-semibold text-slate-500 block">Citizen e-District Portal:</span>
+        <span class="text-xs text-blue-900 font-bold">{{ st.portal_name }}</span>
+      </div>
+
+      <!-- State Scholarships Preview -->
+      {% if st.state_scholarships %}
+      <div class="mb-3 bg-amber-50/70 p-2.5 rounded-xl border border-amber-200">
+        <span class="text-[11px] font-bold text-amber-900 block mb-1">State Scholarships:</span>
+        <ul class="text-[11px] text-amber-950 space-y-0.5">
+          {% for sch in st.state_scholarships[:2] %}
+            <li>• <strong>{{ sch.name }}:</strong> {{ sch.benefit[:60] }}...</li>
+          {% endfor %}
+        </ul>
+      </div>
+      {% endif %}
+
+      <!-- State Welfares Preview -->
+      {% if st.state_welfares %}
+      <div class="mb-3 bg-emerald-50/70 p-2.5 rounded-xl border border-emerald-200">
+        <div class="flex items-center justify-between mb-1">
+          <span class="text-[11px] font-bold text-emerald-900">Key State Welfares:</span>
+          <span class="text-[10px] font-bold bg-emerald-200/80 text-emerald-950 px-1.5 py-0.2 rounded-md">{{ st.state_welfares|length }} Programs</span>
+        </div>
+        <ul class="text-[11px] text-emerald-950 space-y-1">
+          {% for w in st.state_welfares[:3] %}
+            <li>• <strong>{{ w.name }}:</strong> {{ w.description[:65] }}...</li>
+          {% endfor %}
+          {% if st.state_welfares|length > 3 %}
+            <li class="text-[10px] text-emerald-700 font-bold pt-0.5">+ {{ st.state_welfares|length - 3 }} more flagship schemes</li>
+          {% endif %}
+        </ul>
+      </div>
+      {% endif %}
+
+      <div class="mb-4">
+        <span class="text-[11px] font-semibold text-slate-500 block mb-1">Key Services:</span>
+        <div class="flex flex-wrap gap-1">
+          {% for srv in st.key_services[:4] %}
+            <span class="text-[10px] bg-slate-100 text-slate-700 px-2 py-0.5 rounded-md border border-slate-200">{{ srv }}</span>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+
+    <div class="pt-3 border-t border-slate-100 space-y-2">
+      <div class="text-[10px] text-slate-400 mb-1">🏛️ Source: {{ st.official_source or st.portal_url }}</div>
+      
+      <a href="{{ st.portal_url }}" target="_blank" rel="noopener noreferrer" class="w-full bg-slate-900 hover:bg-slate-800 text-white font-bold py-2 px-3 rounded-xl text-xs transition flex items-center justify-center gap-1.5 shadow-sm">
+        <span>Open {{ st.portal_name }}</span>
+        <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+      </a>
+
+      {% if st.scholarship_portal %}
+      <a href="{{ st.scholarship_portal }}" target="_blank" rel="noopener noreferrer" class="w-full bg-amber-50 hover:bg-amber-100 text-amber-900 font-semibold py-1.5 px-3 rounded-xl text-xs transition flex items-center justify-center gap-1.5 border border-amber-200">
+        <span>{{ st.scholarship_portal_name or 'State Scholarship Portal' }}</span>
+        <i data-lucide="graduation-cap" class="w-3.5 h-3.5 text-amber-700"></i>
+      </a>
+      {% endif %}
+    </div>
+
+  </div>
+  {% endfor %}
+</div>
+{% endblock %}

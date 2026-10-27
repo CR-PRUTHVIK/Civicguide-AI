@@ -1,0 +1,87 @@
+/* JanSeva Info Portal Custom Styles */
+
+:root {
+  --gov-navy: #0f2c59;
+  --gov-blue: #1e3a8a;
+  --gov-saffron: #f97316;
+  --gov-green: #15803d;
+  --gov-light-bg: #f8fafc;
+}
+
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  color: #1e293b;
+  background-color: var(--gov-light-bg);
+}
+
+/* Tricolor Top Bar */
+.gov-tricolor-bar {
+  height: 4px;
+  background: linear-gradient(90deg, #ff9933 0%, #ff9933 33.33%, #ffffff 33.33%, #ffffff 66.66%, #138808 66.66%, #138808 100%);
+}
+
+/* High Contrast Mode */
+body.high-contrast {
+  background-color: #000000 !important;
+  color: #ffffff !important;
+}
+
+body.high-contrast .bg-white,
+body.high-contrast .bg-slate-50,
+body.high-contrast .bg-gray-50 {
+  background-color: #121212 !important;
+  color: #ffffff !important;
+  border-color: #333333 !important;
+}
+
+body.high-contrast .text-slate-600,
+body.high-contrast .text-slate-700,
+body.high-contrast .text-gray-600,
+body.high-contrast .text-gray-700 {
+  color: #e2e8f0 !important;
+}
+
+body.high-contrast .text-slate-900,
+body.high-contrast .text-blue-900,
+body.high-contrast .text-indigo-900 {
+  color: #60a5fa !important;
+}
+
+body.high-contrast a {
+  color: #38bdf8 !important;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Checklist custom styling */
+.checklist-item:has(input:checked) {
+  background-color: #f0fdf4;
+  border-color: #86efac;
+}
+
+@media print {
+  header, footer, .no-print, .accessibility-bar {
+    display: none !important;
+  }
+  .print-only {
+    display: block !important;
+  }
+  body {
+    background: white !important;
+    color: black !important;
+  }
+}

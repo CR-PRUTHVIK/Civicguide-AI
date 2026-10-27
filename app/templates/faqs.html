@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="mb-8">
+  <div class="flex items-center gap-2 text-xs text-slate-500 mb-1">
+    <a href="/" class="hover:underline">Home</a>
+    <span>/</span>
+    <span class="text-slate-800 font-semibold">FAQs & Grievance Redressal</span>
+  </div>
+  <h1 class="text-3xl font-black text-slate-900 tracking-tight font-serif">Citizen FAQs & Grievance Directory</h1>
+  <p class="text-sm text-slate-600 mt-1">Authoritative answers to common citizen queries, anti-fraud precautions, and official public grievance mechanisms.</p>
+</div>
+
+<!-- Anti-Fraud & Cyber Safety Alert Card -->
+<div class="bg-gradient-to-br from-rose-950 via-slate-900 to-amber-950 text-white rounded-3xl p-6 sm:p-8 mb-10 shadow-lg border border-rose-900">
+  <div class="flex items-start gap-4">
+    <div class="w-12 h-12 rounded-2xl bg-rose-600/30 text-rose-300 flex items-center justify-center flex-shrink-0 border border-rose-500/40">
+      <i data-lucide="shield-alert" class="w-6 h-6"></i>
+    </div>
+    <div>
+      <h2 class="text-xl font-bold font-serif text-rose-200 mb-2">Anti-Fraud Warning: How to Spot Fake Government Portals</h2>
+      <p class="text-xs sm:text-sm text-slate-300 leading-relaxed mb-4">
+        Fraudulent websites often mimic government portals to charge exorbitant fees or steal personal Aadhaar and banking data.
+      </p>
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
+        <div class="bg-black/30 p-3 rounded-xl border border-white/10">
+          <strong class="text-amber-300 block mb-1">1. Check Domain Suffix</strong>
+          <span class="text-slate-300">All official Indian Government portals strictly end in <code class="text-amber-200 font-mono">.gov.in</code> or <code class="text-amber-200 font-mono">.nic.in</code>. Never trust <code class="text-rose-300 font-mono">.com / .org / .online</code> portals.</span>
+        </div>
+        <div class="bg-black/30 p-3 rounded-xl border border-white/10">
+          <strong class="text-amber-300 block mb-1">2. No Bribes or Middlemen</strong>
+          <span class="text-slate-300">Government statutory fees for caste, domicile, or voter services are nominal (₹15 to ₹50 or FREE on ECI). No agent can speed up statutory field inquiries.</span>
+        </div>
+        <div class="bg-black/30 p-3 rounded-xl border border-white/10">
+          <strong class="text-amber-300 block mb-1">3. Verify QR Codes</strong>
+          <span class="text-slate-300">Legitimate digital certificates issued via e-District have a scannable cryptographic QR code that opens the official state government verification link.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Frequently Asked Questions -->
+<div class="mb-14">
+  <h2 class="text-2xl font-black text-slate-900 tracking-tight mb-6">Frequently Asked Questions (FAQs)</h2>
+
+  <div class="space-y-4">
+    {% for f in faqs %}
+    <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm">
+      <div class="flex items-center gap-2 mb-2">
+        <span class="text-[11px] font-bold text-blue-900 bg-blue-50 px-2.5 py-0.5 rounded-full border border-blue-200">{{ f.category }}</span>
+      </div>
+      <h3 class="text-base font-bold text-slate-900 mb-2 font-serif">{{ f.question }}</h3>
+      <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">{{ f.answer }}</p>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+<!-- Grievance Redressal & Public Portals -->
+<div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-sm mb-14">
+  <h2 class="text-2xl font-black text-slate-900 tracking-tight mb-2">Public Grievance Redressal Channels</h2>
+  <p class="text-xs sm:text-sm text-slate-500 mb-6">If your civil service application is delayed beyond citizen charter timelines or denied unlawfully, escalate using these official statutory channels:</p>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+    {% for g in grievance_directory %}
+    <div class="bg-slate-50 p-5 rounded-2xl border border-slate-200 flex flex-col justify-between">
+      <div>
+        <h3 class="text-base font-bold text-slate-900 mb-2">{{ g.portal_name }}</h3>
+        <p class="text-xs text-slate-600 mb-4 leading-relaxed">{{ g.description }}</p>
+        <div class="text-xs bg-white p-2 rounded-xl border border-slate-200 text-slate-800 font-semibold mb-4 inline-block">
+          Helpline: <span class="text-orange-600 font-mono font-bold">{{ g.helpline }}</span>
+        </div>
+      </div>
+      <a href="{{ g.url }}" target="_blank" rel="noopener noreferrer" class="text-xs font-bold text-white bg-blue-900 hover:bg-blue-800 py-2 px-4 rounded-xl text-center transition flex items-center justify-center gap-1 shadow-sm">
+        <span>Lodge Grievance on {{ g.url }}</span>
+        <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+      </a>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

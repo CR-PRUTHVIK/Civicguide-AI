@@ -1,0 +1,413 @@
+{% extends "base.html" %}
+
+{% block content %}
+<!-- Hero Section with AI Citizen Assistant Intro -->
+<section class="relative rounded-3xl bg-gradient-to-br from-slate-900 via-blue-950 to-indigo-950 text-white overflow-hidden shadow-xl border border-slate-800 p-8 sm:p-12 mb-10">
+  <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#ffffff_1px,transparent_1px)] [background-size:16px_16px]"></div>
+  
+  <div class="relative z-10 max-w-4xl">
+    <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-500/10 border border-blue-400/30 text-blue-300 text-xs font-semibold uppercase tracking-wider mb-4">
+      <i data-lucide="award" class="w-4 h-4 text-amber-400"></i>
+      <span class="lang-en">Official Citizen Knowledge Base & AI Assistant</span>
+      <span class="lang-hi font-hindi" style="display: none;">आधिकारिक नागरिक सेवा ज्ञानकोष एवं AI सहायक</span>
+    </div>
+
+    <h1 class="text-3xl sm:text-5xl font-black tracking-tight leading-tight mb-4 font-serif">
+      <span class="lang-en">Indian Civil & Civic Services <span class="text-amber-400">Information Portal</span></span>
+      <span class="lang-hi font-hindi" style="display: none;">भारतीय नागरिक एवं सिविल सेवाएं <span class="text-amber-400">सूचना पोर्टल</span></span>
+    </h1>
+
+    <p class="text-slate-300 text-base sm:text-lg leading-relaxed">
+      <span class="lang-en">Your official guide to central and state citizen entitlements across India. Accurate statutory guidelines, verified government sources, and direct links for <strong>Scholarships</strong>, <strong>Caste Certificates</strong>, <strong>Voter Services</strong>, <strong>Popular Exams</strong>, and <strong>Welfare Schemes</strong>.</span>
+      <span class="lang-hi font-hindi" style="display: none;">भारत सरकार एवं राज्य सरकारों की नागरिक सेवाओं हेतु प्रामाणिक गाइड। <strong>राष्ट्रीय छात्रवृत्ति (NSP)</strong>, <strong>जाति प्रमाण पत्र</strong>, <strong>मतदाता सेवाएं (ECI)</strong>, <strong>प्रतियोगी परीक्षाएं (UPSC/SSC)</strong> एवं <strong>कल्याणकारी योजनाओं</strong> की सटीक जानकारी।</span>
+    </p>
+  </div>
+</section>
+
+
+<!-- =========================================================================
+     1. MAIN AI CHATBOT MODEL INTERFACE (HOME HERO)
+     ========================================================================= -->
+<section id="chatbot-section" class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-md mb-14">
+  <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6 pb-4 border-b border-slate-100">
+    <div class="flex items-center gap-3">
+      <div class="w-12 h-12 rounded-2xl bg-gradient-to-tr from-blue-900 via-indigo-900 to-blue-700 text-white flex items-center justify-center font-bold shadow-lg shadow-blue-900/10">
+        <i data-lucide="bot" class="w-7 h-7 text-amber-300"></i>
+      </div>
+      <div>
+        <div class="flex items-center gap-2">
+          <h2 class="text-2xl font-black text-slate-900 tracking-tight font-serif">
+            <span class="lang-en">CivicGuide AI Assistant</span>
+            <span class="lang-hi font-hindi" style="display: none;">सिविकगाइड AI नागरिक सहायक</span>
+          </h2>
+          <span class="text-[10px] font-bold text-emerald-800 bg-emerald-100 px-2 py-0.5 rounded-full">Live Assistant</span>
+        </div>
+        <p class="text-xs sm:text-sm text-slate-500">
+          <span class="lang-en">Ask any question in English or Hindi regarding competitive exams (UPSC/SSC/State PSCs), scholarships, caste certificates, voter cards, or state welfare schemes</span>
+          <span class="lang-hi font-hindi" style="display: none;">प्रतियोगी परीक्षाएं (UPSC/SSC), छात्रवृत्ति, जाति प्रमाण पत्र, वोटर कार्ड, अथवा राज्य योजनाओं पर कोई भी प्रश्न पूछें</span>
+        </p>
+      </div>
+    </div>
+
+    <!-- Language indicator badge -->
+    <div class="text-xs text-slate-500 bg-slate-50 px-3 py-1.5 rounded-xl border border-slate-200 flex items-center gap-1.5 self-start md:self-center">
+      <i data-lucide="shield-check" class="w-4 h-4 text-blue-700"></i>
+      <span>Verified Official .gov.in Sources</span>
+    </div>
+  </div>
+
+  <!-- Chat Display Area -->
+  <div id="home-chat-messages" class="min-h-[220px] max-h-[460px] overflow-y-auto space-y-4 p-4 bg-slate-50/70 rounded-2xl border border-slate-200 mb-4">
+    <div class="bg-white p-4 rounded-2xl border border-slate-200 shadow-sm max-w-[90%] text-slate-800 leading-relaxed text-xs sm:text-sm">
+      <div class="font-bold text-blue-900 mb-1 flex items-center gap-1.5">
+        <i data-lucide="sparkles" class="w-4 h-4 text-amber-500"></i>
+        <span>Namaste! / नमस्ते! I am your CivicGuide AI Assistant.</span>
+      </div>
+      <p class="text-slate-600">
+        How can I help you today? You can ask me about competitive exams (UPSC CSE, SSC CGL, State PSCs, NEET/JEE), how to apply for scholarships on NSP, get an OBC-NCL / EWS certificate, register as a voter with Form 6, or discover welfare schemes in your state.
+      </p>
+    </div>
+  </div>
+
+  <!-- Quick Suggestion Prompts -->
+  <div class="mb-4">
+    <span class="text-xs font-bold text-slate-500 uppercase tracking-wider block mb-2">Quick Suggested Questions:</span>
+    <div class="flex flex-wrap gap-2">
+      <button onclick="askHomeQuickPrompt('How do I apply for Caste Certificate and what are OBC-NCL rules?')" class="text-xs bg-slate-100 hover:bg-blue-50 text-slate-700 hover:text-blue-900 px-3 py-1.5 rounded-xl border border-slate-200 transition font-medium text-left">
+        📜 OBC-NCL & Caste Certificate Rules
+      </button>
+      <button onclick="askHomeQuickPrompt('What is NSP OTR Face Auth and what scholarships are available?')" class="text-xs bg-slate-100 hover:bg-blue-50 text-slate-700 hover:text-blue-900 px-3 py-1.5 rounded-xl border border-slate-200 transition font-medium text-left">
+        🎓 NSP OTR & Top Scholarships
+      </button>
+      <button onclick="askHomeQuickPrompt('How do I register as a new voter using ECI Form 6?')" class="text-xs bg-slate-100 hover:bg-blue-50 text-slate-700 hover:text-blue-900 px-3 py-1.5 rounded-xl border border-slate-200 transition font-medium text-left">
+        🗳️ ECI Voter Form 6 (New Voter)
+      </button>
+      <button onclick="askHomeQuickPrompt('What are the age limits and reservation rules for UPSC Civil Services CSE?')" class="text-xs bg-slate-100 hover:bg-blue-50 text-slate-700 hover:text-blue-900 px-3 py-1.5 rounded-xl border border-slate-200 transition font-medium text-left">
+        🏛️ UPSC CSE Exam & Quotas
+      </button>
+      <button onclick="askHomeQuickPrompt('Tell me about welfare schemes and scholarships in Maharashtra')" class="text-xs bg-slate-100 hover:bg-blue-50 text-slate-700 hover:text-blue-900 px-3 py-1.5 rounded-xl border border-slate-200 transition font-medium text-left">
+        🗺️ Maharashtra Schemes (Ladki Bahin/MahaDBT)
+      </button>
+    </div>
+  </div>
+
+  <!-- Chat Input Form -->
+  <form id="home-chat-form" onsubmit="handleHomeChatSubmit(event)" class="flex gap-2">
+    <div class="relative flex-1">
+      <input 
+        type="text" 
+        id="home-chat-input"
+        placeholder="Type your question here in English or हिंदी (e.g. UPSC eligibility, Learner's License, Bihar Post-Matric, EWS rules)..." 
+        class="w-full pl-4 pr-12 py-3 bg-slate-50 hover:bg-white focus:bg-white border-2 border-slate-200 focus:border-blue-600 rounded-2xl text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-blue-100 transition shadow-inner"
+        autocomplete="off"
+      />
+    </div>
+    <button type="submit" class="bg-blue-900 hover:bg-blue-800 text-white font-bold px-6 py-3 rounded-2xl text-xs sm:text-sm transition shadow-md inline-flex items-center gap-2 flex-shrink-0">
+      <i data-lucide="send" class="w-4 h-4 text-amber-300"></i>
+      <span class="hidden sm:inline">Ask CivicGuide AI</span>
+    </button>
+  </form>
+</section>
+
+
+<!-- =========================================================================
+     2. MOST POPULAR CIVIL SERVICES & COMPETITIVE EXAMINATIONS
+     ========================================================================= -->
+<section id="exams-section" class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-sm mb-14">
+  <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-6 pb-4 border-b border-slate-100">
+    <div>
+      <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-indigo-50 text-indigo-900 text-xs font-bold border border-indigo-200 mb-1">
+        <i data-lucide="award" class="w-3.5 h-3.5 text-indigo-700"></i>
+        <span>National Competitive Examinations</span>
+      </div>
+      <h2 class="text-2xl font-black text-slate-900 tracking-tight font-serif">
+        <span class="lang-en">Most Popular Civil Services & Entrance Exams</span>
+        <span class="lang-hi font-hindi" style="display: none;">प्रमुख राष्ट्रीय सिविल सेवा एवं प्रवेश परीक्षाएं</span>
+      </h2>
+      <p class="text-xs sm:text-sm text-slate-500 mt-0.5">Official eligibility, age limits, constitutional reservation quotas, and official application portals</p>
+    </div>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    {% for ex in popular_exams %}
+    <div class="bg-slate-50/80 p-5 rounded-2xl border border-slate-200 flex flex-col justify-between hover:shadow-md transition group">
+      <div>
+        <div class="flex items-center justify-between gap-2 mb-2 pb-2 border-b border-slate-200">
+          <span class="text-xs font-bold text-indigo-900 bg-indigo-100 px-2.5 py-0.5 rounded">{{ ex.conducted_by }}</span>
+          <span class="text-[11px] text-slate-500 font-semibold">{{ ex.stages.split('->')[0] }}</span>
+        </div>
+
+        <h3 class="font-bold text-base text-slate-900 mb-1 group-hover:text-blue-900 transition font-serif">
+          <span class="lang-en">{{ ex.name }}</span>
+          <span class="lang-hi font-hindi" style="display: none;">{{ ex.name_hi }}</span>
+        </h3>
+
+        <div class="space-y-2 text-xs text-slate-600 mb-4 mt-3">
+          <div><strong class="text-slate-800">Age Limit:</strong> {{ ex.eligibility_age }}</div>
+          <div><strong class="text-slate-800">Qualification:</strong> {{ ex.qualification }}</div>
+          <div><strong class="text-slate-800">Reservation:</strong> {{ ex.reservation_benefits }}</div>
+        </div>
+      </div>
+
+      <div class="pt-3 border-t border-slate-200 flex items-center justify-between">
+        <span class="text-[11px] text-slate-500">Source: <strong>{{ ex.conducted_by }}</strong></span>
+        <a href="{{ ex.official_url }}" target="_blank" rel="noopener noreferrer" class="text-xs font-bold text-indigo-900 hover:text-indigo-700 flex items-center gap-1">
+          <span>Official Portal</span> <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+        </a>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+
+
+<!-- =========================================================================
+     3. MOST POPULAR NATIONAL WELFARE SCHEMES
+     ========================================================================= -->
+<section id="welfare-section" class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-sm mb-14">
+  <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-6 pb-4 border-b border-slate-100">
+    <div>
+      <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-rose-50 text-rose-900 text-xs font-bold border border-rose-200 mb-1">
+        <i data-lucide="heart-handshake" class="w-3.5 h-3.5 text-rose-700"></i>
+        <span>Flagship Social Security</span>
+      </div>
+      <h2 class="text-2xl font-black text-slate-900 tracking-tight font-serif">
+        <span class="lang-en">Most Popular Flagship Welfare Schemes</span>
+        <span class="lang-hi font-hindi" style="display: none;">प्रमुख राष्ट्रीय कल्याणकारी एवं सामाजिक सुरक्षा योजनाएं</span>
+      </h2>
+      <p class="text-xs sm:text-sm text-slate-500 mt-0.5">Direct Benefit Transfer (DBT), health insurance, housing, and livelihood support</p>
+    </div>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    {% for w in national_welfares %}
+    <div class="bg-slate-50/80 p-5 rounded-2xl border border-slate-200 flex flex-col justify-between hover:shadow-md transition group">
+      <div>
+        <div class="flex items-center justify-between gap-2 mb-2 pb-2 border-b border-slate-200">
+          <span class="text-xs font-bold text-rose-900 bg-rose-100 px-2.5 py-0.5 rounded">{{ w.ministry }}</span>
+        </div>
+
+        <h3 class="font-bold text-base text-slate-900 mb-1 group-hover:text-blue-900 transition font-serif">
+          <span class="lang-en">{{ w.name }}</span>
+          <span class="lang-hi font-hindi" style="display: none;">{{ w.name_hi }}</span>
+        </h3>
+
+        <div class="bg-rose-50 p-3 rounded-xl border border-rose-200 text-xs text-rose-950 font-semibold mb-3 mt-2">
+          {{ w.benefit }}
+        </div>
+
+        <p class="text-xs text-slate-600 mb-3 leading-relaxed">
+          <strong>Target:</strong> {{ w.target }}
+        </p>
+      </div>
+
+      <div class="pt-3 border-t border-slate-200 flex items-center justify-between">
+        <span class="text-[11px] text-slate-500">Source: <strong>{{ w.official_url.replace('https://', '') }}</strong></span>
+        <a href="{{ w.official_url }}" target="_blank" rel="noopener noreferrer" class="text-xs font-bold text-rose-900 hover:text-rose-700 flex items-center gap-1">
+          <span>Apply Online</span> <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+        </a>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+
+
+<!-- =========================================================================
+     4. MOST POPULAR SCHOLARSHIPS
+     ========================================================================= -->
+<section class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-sm mb-14">
+  <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-6 pb-4 border-b border-slate-100">
+    <div>
+      <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-50 text-amber-900 text-xs font-bold border border-amber-200 mb-1">
+        <i data-lucide="graduation-cap" class="w-3.5 h-3.5 text-amber-700"></i>
+        <span>Higher Education & Grants</span>
+      </div>
+      <h2 class="text-2xl font-black text-slate-900 tracking-tight font-serif">
+        <span class="lang-en">Most Popular National Scholarships</span>
+        <span class="lang-hi font-hindi" style="display: none;">सर्वाधिक लोकप्रिय राष्ट्रीय छात्रवृत्तियां</span>
+      </h2>
+      <p class="text-xs sm:text-sm text-slate-500 mt-0.5">Pre-Matric, Post-Matric, AICTE, CSSS, and PM-YASASVI schemes</p>
+    </div>
+    <a href="/scholarships" class="text-xs font-bold text-blue-900 hover:underline">View All Scholarships →</a>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+    {% for s in popular_scholarships %}
+    <div class="bg-slate-50/80 p-5 rounded-2xl border border-slate-200 flex flex-col justify-between hover:shadow-md transition group">
+      <div>
+        <div class="flex items-center justify-between gap-2 mb-2 pb-2 border-b border-slate-200">
+          <span class="text-xs font-bold text-amber-900 bg-amber-100 px-2.5 py-0.5 rounded">{{ s.category }}</span>
+          <span class="text-[11px] font-semibold text-emerald-800 bg-emerald-50 px-2 py-0.5 rounded">Max: ₹{{ "{:,}".format(s.max_income_inr) }}/yr</span>
+        </div>
+
+        <h3 class="font-bold text-base text-slate-900 mb-1 group-hover:text-blue-900 transition font-serif">
+          <span class="lang-en">{{ s.title }}</span>
+          <span class="lang-hi font-hindi" style="display: none;">{{ s.title_hi }}</span>
+        </h3>
+
+        <div class="text-xs text-amber-950 font-medium bg-amber-50 p-2.5 rounded-xl border border-amber-200 mb-3 mt-2">
+          {{ s.benefits }}
+        </div>
+
+        <p class="text-xs text-slate-600 mb-3 leading-relaxed">
+          {{ s.description }}
+        </p>
+      </div>
+
+      <div class="pt-3 border-t border-slate-200 flex items-center justify-between">
+        <a href="/scholarships#{{ s.id }}" class="text-xs font-bold text-blue-900 hover:underline">Full Details & Docs →</a>
+        <a href="{{ s.portal_url }}" target="_blank" rel="noopener noreferrer" class="text-xs font-bold text-white bg-blue-900 hover:bg-blue-800 px-3 py-1.5 rounded-xl transition flex items-center gap-1 shadow-sm">
+          <span>Apply on {{ s.portal_name }}</span> ↗
+        </a>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+
+
+<!-- =========================================================================
+     5. INTERACTIVE "SELECT STATE" HUB
+     ========================================================================= -->
+<section id="select-state-section" class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-sm mb-14">
+  <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6 pb-4 border-b border-slate-100">
+    <div>
+      <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 text-emerald-800 text-xs font-bold border border-emerald-200 mb-1">
+        <i data-lucide="map-pin" class="w-3.5 h-3.5 text-emerald-600"></i>
+        <span data-i18n="navSelectState">Select State</span>
+      </div>
+      <h2 class="text-2xl font-black text-slate-900 tracking-tight font-serif">
+        <span class="lang-en">Select State: Welfares, Schemes & Citizen Services</span>
+        <span class="lang-hi font-hindi" style="display: none;">राज्य चुनें: विशिष्ट कल्याणकारी योजनाएं एवं छात्रवृत्ति</span>
+      </h2>
+      <p class="text-xs sm:text-sm text-slate-500 mt-1" data-i18n="selectStatePrompt">
+        Select your state to load dedicated state scholarships, welfare allowances, and e-District citizen portals:
+      </p>
+    </div>
+
+    <!-- State Dropdown Selector -->
+    <div class="w-full md:w-80">
+      <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">Choose State / UT</label>
+      <select id="home-state-dropdown" onchange="loadHomeStateData()" class="w-full bg-slate-50 border-2 border-emerald-600 rounded-xl px-4 py-2.5 text-xs sm:text-sm font-bold text-slate-900 focus:outline-none focus:ring-2 focus:ring-emerald-400">
+        {% for st in states %}
+          <option value="{{ st.id }}">{{ st.state_name }} ({{ st.portal_name }})</option>
+        {% endfor %}
+      </select>
+    </div>
+  </div>
+
+  <!-- State Dynamic Details View Container -->
+  <div id="home-state-details-view" class="space-y-6">
+    <!-- Populated via loadHomeStateData() -->
+  </div>
+</section>
+
+<script>
+const STATES_LOCAL_DB = {{ states | tojson | safe }};
+
+function loadHomeStateData() {
+  const selectedId = document.getElementById('home-state-dropdown').value;
+  const container = document.getElementById('home-state-details-view');
+  const isHi = (localStorage.getItem('gov_portal_lang') || 'en') === 'hi';
+
+  const st = STATES_LOCAL_DB.find(s => s.id === selectedId) || STATES_LOCAL_DB[0];
+  if (!st) return;
+
+  let html = `
+    <div class="bg-gradient-to-r from-slate-900 via-blue-950 to-indigo-950 text-white rounded-2xl p-6 shadow-md border border-slate-800">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4 pb-4 border-b border-slate-800">
+        <div>
+          <span class="text-xs font-bold text-amber-300 bg-amber-950/60 px-2.5 py-0.5 rounded border border-amber-700">${st.type}</span>
+          <h3 class="text-2xl font-black text-white mt-1 font-serif">${isHi ? (st.state_name_hi || st.state_name) : st.state_name}</h3>
+          <p class="text-xs text-blue-200 mt-0.5">${isHi ? 'ई-गवर्नेंस एवं नागरिक सेवा पोर्टल:' : 'e-Governance Citizen Portal:'} <strong>${st.portal_name}</strong></p>
+        </div>
+        <div class="flex items-center gap-2 self-start sm:self-center">
+          <a href="${st.portal_url}" target="_blank" rel="noopener noreferrer" class="bg-emerald-600 hover:bg-emerald-500 text-white font-bold px-4 py-2 rounded-xl text-xs transition shadow flex items-center gap-1.5">
+            <span>${isHi ? 'आधिकारिक पोर्टल खोलें' : 'Open Official Portal'}</span> ↗
+          </a>
+        </div>
+      </div>
+
+      <div class="text-xs text-slate-300 bg-black/30 p-2.5 rounded-xl border border-white/10 mb-5 flex items-center gap-2">
+        <i data-lucide="shield-check" class="w-4 h-4 text-emerald-400 flex-shrink-0"></i>
+        <span><strong>${isHi ? 'आधिकारिक स्रोत:' : 'Official Source:'}</strong> ${st.official_source || st.portal_url}</span>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+  `;
+
+  // State Scholarships Column
+  html += `
+    <div>
+      <h4 class="text-sm font-bold text-amber-300 uppercase tracking-wider mb-3 flex items-center gap-1.5">
+        <i data-lucide="graduation-cap" class="w-4 h-4 text-amber-400"></i>
+        <span>${isHi ? 'राज्य छात्रवृत्ति योजनाएं' : 'State Scholarship Schemes'}</span>
+      </h4>
+  `;
+
+  if (st.state_scholarships && st.state_scholarships.length > 0) {
+    html += `<div class="space-y-3">`;
+    st.state_scholarships.forEach(sch => {
+      html += `
+        <div class="bg-white/10 backdrop-blur p-4 rounded-xl border border-white/10">
+          <div class="font-bold text-sm text-white mb-1">${isHi ? (sch.name_hi || sch.name) : sch.name}</div>
+          <div class="text-xs text-blue-200 mb-2">${sch.benefit}</div>
+          <div class="text-[11px] text-amber-300 font-semibold mb-2">पात्रता: ${sch.target} | आय सीमा: ${sch.income_limit}</div>
+          <a href="${sch.url}" target="_blank" rel="noopener noreferrer" class="text-xs font-bold text-amber-300 hover:underline inline-flex items-center gap-1">
+            ${isHi ? 'छात्रवृत्ति पोर्टल पर जाएं' : 'Visit Scholarship Portal'} ↗
+          </a>
+        </div>
+      `;
+    });
+    html += `</div>`;
+  } else {
+    html += `<div class="bg-white/5 p-3 rounded-xl text-xs text-slate-400">${isHi ? 'छात्रवृत्तियां राष्ट्रीय छात्रवृत्ति पोर्टल (NSP) के माध्यम से उपलब्ध हैं।' : 'Scholarships available through National Scholarship Portal (NSP).'}</div>`;
+  }
+  html += `</div>`;
+
+  // State Welfare Schemes Column
+  html += `
+    <div>
+      <h4 class="text-sm font-bold text-emerald-300 uppercase tracking-wider mb-3 flex items-center gap-1.5">
+        <i data-lucide="heart-handshake" class="w-4 h-4 text-emerald-400"></i>
+        <span>${isHi ? 'राज्य कल्याणकारी एवं सामाजिक सुरक्षा योजनाएं' : 'State Welfare & Social Programs'}</span>
+      </h4>
+  `;
+
+  if (st.state_welfares && st.state_welfares.length > 0) {
+    html += `<div class="space-y-3">`;
+    st.state_welfares.forEach(w => {
+      const catBadge = w.category ? `<span class="text-[10px] font-bold text-emerald-300 bg-emerald-950/80 px-2 py-0.5 rounded border border-emerald-700/80 uppercase">${w.category}</span>` : '';
+      const benefitHighlight = w.benefit ? `<div class="text-xs text-amber-300 font-semibold mb-1 flex items-center gap-1.5"><i data-lucide="sparkles" class="w-3.5 h-3.5 text-amber-400 flex-shrink-0"></i> <span>${w.benefit}</span></div>` : '';
+      html += `
+        <div class="bg-white/10 backdrop-blur p-4 rounded-xl border border-white/10 hover:border-emerald-500/40 transition">
+          <div class="flex items-center justify-between gap-2 mb-1.5">
+            <div class="font-bold text-sm text-white">${isHi ? (w.name_hi || w.name) : w.name}</div>
+            ${catBadge}
+          </div>
+          ${benefitHighlight}
+          <div class="text-xs text-slate-300 leading-relaxed">${w.description}</div>
+        </div>
+      `;
+    });
+    html += `</div>`;
+  } else {
+    html += `<div class="bg-white/5 p-3 rounded-xl text-xs text-slate-400">${isHi ? 'अन्य नागरिक एवं राजस्व सेवाएं राज्य e-District पोर्टल पर उपलब्ध हैं।' : 'Citizen and revenue services available on State e-District portal.'}</div>`;
+  }
+  html += `</div>`;
+
+  html += `
+      </div>
+    </div>
+  `;
+
+  container.innerHTML = html;
+  lucide.createIcons();
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  loadHomeStateData();
+});
+</script>
+{% endblock %}
